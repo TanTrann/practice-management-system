@@ -481,28 +481,7 @@ $(document).ready( function () {
 
 <!-- add soft room -->
 <script type="text/javascript">
-        $('.add_soft_room').click(function(){
-
-        var software_name = $('.software_name').val();
-        var software_id = $('.software_id').val();
-        var room_id = $('.room_id').val();
-        var software_number = $('.software_number').val();
-        var _token = $('input[name="_token"]').val();
-        // alert(city);
-        // alert(province);
-        // alert(wards);
-        // alert(fee_ship);
-        $.ajax({
-            url : '{{url('/insert-software-room')}}',
-            method: 'POST',
-            data:{software_name:software_name,  software_id: software_id, _token:_token, room_id:room_id, software_number:software_number},
-            success:function(data){
-            
-            }
-        });
-
-
-        });
+        
         $(document).ready(function(){
             $('.choose').on('change',function(){
             var action = $(this).attr('id');
@@ -515,7 +494,8 @@ $(document).ready( function () {
                 result = 'version_number';
                
             }else{
-                result = 'software_id';
+                
+                result = 'version_id';
                 
             }
             $.ajax({

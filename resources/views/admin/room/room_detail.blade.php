@@ -18,12 +18,12 @@
                                         <p class="text-muted">Số máy</p>
                                         <h2>{{$value->pc_quantity}}</h2>  
                                     </div>
+                                    @endforeach
+                                   
                                     <div class="col-6">
                                         <p class="text-muted">Phần mềm</p>
-                                        <h2>{{$value->pc_quantity}}</h2>
-                                      
+                                        <h2>{{$count_software}}</h2>
                                     </div>
-                                    @endforeach
                                 </div>
                             </div>
                             
@@ -69,27 +69,19 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach(@$all_room_details as $key => $rdetails)
+                                        @foreach($ver_detail as $key => $sdetails)
                                         <tr>
-                                            <th scope="row">{{$rdetails->room_details_id}}</th>
-                                            <td>{{$rdetails->software_name}}</td>
-                                            <td>{{$rdetails->software_number}}</td>
-                                            <td>@mdo</td>
+                                            <th scope="row">{{$sdetails->room_details_id}}</th>
+                                            <td>{{$sdetails->software_name}}</td>
+                                          
+                                            <td>{{$sdetails->version_number}}</td>
+                                            <td><button class="btn-sm btn-danger btn-outline-danger"  data-toggle="modal" data-target="#showeditsoftware" data-id_software="10">
+                                                            <i class="ti-trash"></i>
+                                                        </button></td>
                                             @endforeach
                                         </tr>
                                         
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -123,7 +115,7 @@
                 <div class="col-sm-11" style="margin-left: 75px;">
                     
                 
-                    <form>
+                    <form action="{{url('/save-software-room')}}" method="">
                         @csrf
                             @foreach ($room_detail as $key => $value)   
                             <input type="text" name="room_id" id="" value="{{$value->room_id}}">
@@ -146,7 +138,7 @@
                             
                             <label class="col-sm-3 col-form-label">Phiên bản:</label>
                             <div class="col-sm-10">
-                                        <select name="version_number" id="version_number" class="form-control version_number choose ">
+                                        <select name="version_number" id="version_number" class="form-control choose version_number  ">
                                             
                                         <option> --Chọn phiên bản--</option>
                                            
@@ -155,9 +147,9 @@
                             </div>
                         </div>
                         <div class="form-group row" >                           
-                            <label class="col-sm-3 col-form-label">ID:</label>
+                            <label class="col-sm-3 col-form-label">id version:</label>
                             <div class="col-sm-10">
-                                        <select name="software_id" id="software_id" class="form-control software_id ">
+                                        <select name="version_id" id="version_id" class="form-control version_id choose ">
                                            
                                             
                                     </select>
@@ -170,7 +162,7 @@
             
         </div>
                 <div class="modal-footer">
-                <button type="submit" class="btn btn-primary add_soft_room" name="add_soft_room">Thêm phần mềm</button>
+                <button type="submit" class="btn btn-primary" name="">Thêm phần mềm</button>
                 <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
                     </form>
                 </div>

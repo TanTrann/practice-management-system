@@ -45,8 +45,8 @@ Route::post('/show-edit-room','App\Http\Controllers\RoomController@show_edit_roo
 
 Route::get('/room-detail/{room_id}','App\Http\Controllers\RoomController@room_detail');
 Route::post('/select-software','App\Http\Controllers\RoomController@select_software');
-Route::post('/save-software-room','App\Http\Controllers\RoomController@save_software_room');
-Route::post('/insert-software-room','App\Http\Controllers\RoomController@insert_software_room');
+Route::get('/save-software-room','App\Http\Controllers\RoomController@save_software_room');
+Route::post('/insert-soft-room','App\Http\Controllers\RoomController@insert_soft_room');
 //frontend---------------------------------------------------------------------------
 
 

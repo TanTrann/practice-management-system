@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
 use App\http\Requests;
-use Session;
+use App\Models\Room;
+use App\Models\Software;
+use Illuminate\Support\Facades\Session;
 use Illuminate\support\facades\redirect;
 session_start();
 
@@ -33,7 +35,9 @@ class AdminController extends Controller
 
     public function show_dashboard(){
     	 $this->AuthLogin();
-    	return view ('admin.dashboard');
+         $count_room=Room::get()->count();
+         $count_software=Software::get()->count();
+    	return view ('admin.dashboard')->with('count_room',$count_room)->with('count_software',$count_software);
     }
     
     public function dashboard(Request $request){

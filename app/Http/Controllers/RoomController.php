@@ -28,6 +28,7 @@ class RoomController extends Controller
         $this->AuthLogin();
         $all_room = DB::table('tbl_room')->get();
         $all_software = Software::get();
+        
         $manager_room = view('admin.room.all_room')->with('all_room',$all_room)->with('all_software',$all_software);
         return view ('admin_layout')->with('admin.room.all_room',$manager_room);
     }
@@ -78,10 +79,14 @@ class RoomController extends Controller
 
     public function room_detail($room_id){
         $this->AuthLogin();
+        $count_software=  RoomDetails::where('room_id',$room_id)->get()->count();
         $room_detail = DB::table('tbl_room')->where('room_id',$room_id)->get();
         $all_software = Software::get();
-        $all_room_details = RoomDetails::where('room_id',$room_id)->get(); 
-        $manager_room  = view('admin.room.room_detail')->with('room_detail',$room_detail)->with('all_room_details',$all_room_details)->with('all_software',$all_software);
+        $ver_detail = DB::table('tbl_room_details')->where('room_id',$room_id)->join('tbl_version','tbl_version.version_id','=','tbl_room_details.version_id')
+        ->join('tbl_software','tbl_software.software_id','=','tbl_version.software_id')->select('tbl_software.*','tbl_version.*','tbl_room_details.*')
+        ->get();
+        
+        $manager_room  = view('admin.room.room_detail')->with('count_software',$count_software)->with('room_detail',$room_detail)->with('all_software',$all_software)->with('ver_detail',$ver_detail);
         return view('admin_layout')->with('admin.edit_room', $manager_room);
     }
 
@@ -94,33 +99,34 @@ class RoomController extends Controller
                 $select_version = Version::where('software_id',$data['ma_id'])->orderby('version_number','ASC')->get();
     			$output.='<option>---Chọn phiên bản---</option>';
     			foreach($select_version as $key => $soft){
-    				$output.='<option value="'.$soft->software_id.'">'.'<p name="version_number">'.$soft->version_number.'</p>'.'</option>';
+    				$output.='<option value="'.$soft->version_id.'">'.$soft->version_number.'</option>';
     			}
               
     		}else{
 
                
-                $id = Version::where('software_id',$data['ma_id'])->orderby('version_number','ASC')->get();
+                $id = Version::where('version_id',$data['ma_id'])->orderby('version_number','ASC')->get();
     			
-    			foreach($id as $key => $soft){
-    				$output.='<option value="'.$soft->software_id.'">'.$soft->software_id.'</option>';
-    			}
-               
+                    foreach($id as $key => $soft){
+                        $output.='<option value="'.$soft->version_id.'">'.$soft->version_id.'</option>';    
+                    
+                    } 
     		}
     		echo $output;
     	}
     	
     }
 
-    public function insert_software_room(Request $request){
+    public function save_software_room(Request $request){
         $this->AuthLogin();
 		$data = $request->all();
 		$details = new RoomDetails();
-		$details->version_number = $data['version_number'];
 		$details->room_id = $data['room_id'];
-		$details->software_id = $data['software_id'];
-		$details->software_name = $data['software_name'];
+		$details->version_id = $data['version_id'];		
+
 		$details->save();
+        Session::put('message','Thêm phần mềm thành công');
+        return Redirect()->back();
 	}
     
 

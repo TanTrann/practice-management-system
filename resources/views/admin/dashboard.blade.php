@@ -12,14 +12,10 @@
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
-                                                        <i class="icofont icofont-pie-chart bg-c-blue card1-icon"></i>
-                                                        <span class="text-c-blue f-w-600">Use space</span>
-                                                        <h4>49/50GB</h4>
-                                                        <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-blue f-16 icofont icofont-warning m-r-10"></i>Get more space
-                                                            </span>
-                                                        </div>
+                                                        <i class=" ti-server bg-c-blue card1-icon"></i>
+                                                        <span class="text-c-blue f-w-600">Số phòng</span>
+                                                        <h4>{{$count_room}} phòng</h4>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -28,14 +24,10 @@
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
-                                                        <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
-                                                        <span class="text-c-pink f-w-600">Revenue</span>
-                                                        <h4>$23,589</h4>
-                                                        <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-pink f-16 icofont icofont-calendar m-r-10"></i>Last 24 hours
-                                                            </span>
-                                                        </div>
+                                                        <i class="ti-microsoft-alt bg-c-pink card1-icon"></i>
+                                                        <span class="text-c-pink f-w-600">Số phần mềm</span>
+                                                        <h4>{{$count_software}} phần mềm</h4>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -44,14 +36,10 @@
                                             <div class="col-md-6 col-xl-3">
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
-                                                        <i class="icofont icofont-warning-alt bg-c-green card1-icon"></i>
-                                                        <span class="text-c-green f-w-600">Fixed issue</span>
+                                                        <i class="ti-desktop bg-c-green card1-icon"></i>
+                                                        <span class="text-c-green f-w-600">Số máy</span>
                                                         <h4>45</h4>
-                                                        <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-green f-16 icofont icofont-tag m-r-10"></i>Tracked via microsoft
-                                                            </span>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,13 +49,9 @@
                                                 <div class="card widget-card-1">
                                                     <div class="card-block-small">
                                                         <i class="icofont icofont-social-twitter bg-c-yellow card1-icon"></i>
-                                                        <span class="text-c-yellow f-w-600">Followers</span>
+                                                        <span class="text-c-yellow f-w-600">Số cán bộ</span>
                                                         <h4>+562</h4>
-                                                        <div>
-                                                            <span class="f-left m-t-10 text-muted">
-                                                                <i class="text-c-yellow f-16 icofont icofont-refresh m-r-10"></i>Just update
-                                                            </span>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,21 +60,95 @@
                                             <div class="col-md-12 col-xl-8">
                                                 <div class="card">
                                                     <div class="card-header">
-                                                        <h5>Statestics</h5>
-                                                        <div class="card-header-left ">
-                                                        </div>
-                                                        <div class="card-header-right">
-                                                            <ul class="list-unstyled card-option">
-                                                                <li><i class="icofont icofont-simple-left "></i></li>
-                                                                <li><i class="icofont icofont-maximize full-card"></i></li>
-                                                                <li><i class="icofont icofont-minus minimize-card"></i></li>
-                                                                <li><i class="icofont icofont-refresh reload-card"></i></li>
-                                                                <li><i class="icofont icofont-error close-card"></i></li>
-                                                            </ul>
-                                                        </div>
+                                                        <h3>THỜI KHÓA BIỂU</h3>  
                                                     </div>
                                                     <div class="card-block">
-                                                        <div id="statestics-chart" style="height:517px;"></div>
+                                                       <!-- Nav tabs -->
+                                                        <ul class="nav nav-tabs md-tabs" role="tablist">
+                                                            <li class="nav-item">
+                                                                <a class="nav-link active" data-toggle="tab" href="#home3" role="tab">Tuần1</a>
+                                                                <div class="slide"></div>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" data-toggle="tab" href="#profile3" role="tab">Tuần2</a>
+                                                                <div class="slide"></div>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" data-toggle="tab" href="#messages3" role="tab">Tuần3</a>
+                                                                <div class="slide"></div>
+                                                            </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" data-toggle="tab" href="#settings3" role="tab">Tuần4</a>
+                                                                <div class="slide"></div>
+                                                            </li>
+                                                        </ul>
+                                                        <div class="tab-content card-block">
+                                                            <div class="tab-pane active" id="home3" role="tabpanel">
+                                                            <div class="card-block table-border-style">
+                                                            <div class="table-responsive">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            
+                                                                            <th>Buổi</th>
+                                                                            <th>Phòng</th>
+                                                                            <th>Thứ 2</th>
+                                                                            <th>Thứ 3</th>
+                                                                            <th>Thứ 4</th>
+                                                                            <th>Thứ 5</th>
+                                                                            <th>Thứ 6</th>
+                                                                            <th>Thứ 7</th>
+                                                                            <th>Chủ nhật</th> 
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <th rowspan="3">Sáng</th> 
+                                                                            <td>phong 1</td>   
+                                                                            <td>Otto</td>
+                                                                            <td>@mdo</td>
+                                                                        </tr>
+                                                                        <tr> 
+                                                                            <td>phong 2</td>
+                                                                            <td>Thornton</td>
+                                                                            <td>@fat</td>
+                                                                        </tr>
+                                                                        <tr> 
+                                                                            <td>phong 3</td>
+                                                                            <td>the Bird</td>
+                                                                            <td>@twitter</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th rowspan="3">Chiều</th> 
+                                                                            <td>phong 1</td>   
+                                                                            <td>Otto</td>
+                                                                            <td>@mdo</td>
+                                                                        </tr>
+                                                                        <tr> 
+                                                                            <td>phong 2</td>
+                                                                            <td>Thornton</td>
+                                                                            <td>@fat</td>
+                                                                        </tr>
+                                                                        <tr> 
+                                                                            <td>phong 3</td>
+                                                                            <td>the Bird</td>
+                                                                            <td>@twitter</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                            </div>
+                                                            <div class="tab-pane" id="profile3" role="tabpanel">
+                                                                <p class="m-0">2.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="messages3" role="tabpanel">
+                                                                <p class="m-0">3. This is Photoshop's version of Lorem IpThis is Photoshop's version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mas Cum sociis natoque penatibus et magnis dis.....</p>
+                                                            </div>
+                                                            <div class="tab-pane" id="settings3" role="tabpanel">
+                                                                <p class="m-0">4.Cras consequat in enim ut efficitur. Nulla posuere elit quis auctor interdum praesent sit amet nulla vel enim amet. Donec convallis tellus neque, et imperdiet felis amet.</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
