@@ -1,5 +1,6 @@
 @section('admin_content')
 @extends('admin_layout')
+
   <!-- Material tab card start -->
   <div class="pcoded-inner-content">
 
@@ -7,15 +8,16 @@
     <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-room" style="float: right;">Thêm phòng</button>    <div class="card-header-left">
         <div class="card-header">
                                 <h3>Quản lí phòng</h3>
-                                <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
-                            </div>
-        <?php
+                                <?php
             $message = Session::get('message');
             if ($message){
             echo '<span style="color:red; font-size:17px;">',$message.'</span>';
                 Session::put('message',null);
                 }
         ?>
+                                <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
+                            </div>
+       
     <div class="card-block">
         <div class="row">
         @foreach($all_room as $key => $room)
@@ -31,7 +33,7 @@
                     </div>
                     <div> 
                    <p style="text-align: center;"> <i class="ti-desktop" style="font-size: 103px"></i></p>
-                    <p style="font-size: 14px;">Tổng số: <label class="badge badge-warning"style="font-size: 14px;">{{$room->pc_quantity}}</label> máy tính</p>
+                   
                         
                     </div>
                     <div style="text-decoration: flex;">
@@ -85,7 +87,7 @@
                                 placeholder="Nhập số lượng">
                             </div>
                         </div>
-                    
+                        
                 </div>        
             
             
@@ -132,13 +134,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Số lượng máy:</label>
-                            <div class="col-sm-10">
-                                <input name="pc_quantity" type="text" class="form-control" id="room_quickview_quantity"
-                                placeholder="Nhập số lượng">
-                            </div>
-                        </div>
+                       
                     
                 </div>        
             

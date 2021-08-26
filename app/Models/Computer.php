@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RoomDetails extends Model
+class Computer extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
-    	 'verison_id','room_id',
+    	 'room_id','computer_name',
     ];
-    protected $primaryKey = 'room_details_id';
- 	protected $table = 'tbl_room_details';
+    protected $primaryKey = 'computer_id';
+ 	protected $table = 'tbl_computer';
 }

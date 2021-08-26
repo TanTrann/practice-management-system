@@ -30,6 +30,8 @@ Route::get('/logout','App\Http\Controllers\AdminController@logout');
 //SCHEDULE
 // backend---------------------------------------------------------------------------
 Route::get('/all-schedule','App\Http\Controllers\ScheduleController@all_schedule');
+Route::get('/manage-schedule','App\Http\Controllers\ScheduleController@manage_schedule');
+Route::post('/update-schedule','App\Http\Controllers\ScheduleController@update_schedule');
 // frontend---------------------------------------------------------------------------
 
 
@@ -47,6 +49,12 @@ Route::get('/room-detail/{room_id}','App\Http\Controllers\RoomController@room_de
 Route::post('/select-software','App\Http\Controllers\RoomController@select_software');
 Route::get('/save-software-room','App\Http\Controllers\RoomController@save_software_room');
 Route::post('/insert-soft-room','App\Http\Controllers\RoomController@insert_soft_room');
+Route::get('/delete-soft-room/{room_details_id}','App\Http\Controllers\RoomController@delete_soft_room');
+Route::post('/save-pc','App\Http\Controllers\RoomController@save_pc');
+Route::get('/delete-pc/{computer_id}','App\Http\Controllers\RoomController@delete_pc');
+Route::post('/edit-pc','App\Http\Controllers\RoomController@edit_pc');
+Route::post('/update-pc','App\Http\Controllers\RoomController@update_pc');
+
 //frontend---------------------------------------------------------------------------
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\http\Requests;
+use App\Models\Computer;
 use App\Models\Room;
 use App\Models\Software;
 use Illuminate\Support\Facades\Session;
@@ -37,7 +38,8 @@ class AdminController extends Controller
     	 $this->AuthLogin();
          $count_room=Room::get()->count();
          $count_software=Software::get()->count();
-    	return view ('admin.dashboard')->with('count_room',$count_room)->with('count_software',$count_software);
+         $count_pc=Computer::get()->count();
+    	return view ('admin.dashboard')->with('count_room',$count_room)->with('count_software',$count_software)->with('count_pc',$count_pc);
     }
     
     public function dashboard(Request $request){

@@ -42,7 +42,9 @@
                                     <button class="btn-sm btn-primary btn-outline-primary showeditsoftware" data-toggle="modal" data-target="#showeditsoftware" data-id_software="{{$value->software_id}}">
                                         <i class="ti-pencil"></i>
                                     </button>
-                                    <button class="btn-sm btn-danger btn-outline-danger"  data-toggle="modal" data-target="#showeditsoftware" data-id_software="{{$value->software_id}}">
+                                    <a href="{{URL::to('/delete-software/'.$value->software_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
+
+                                    <button class="btn-sm btn-danger btn-outline-danger" >
                                         <i class="ti-trash"></i>
                                     </button>                         
                         @endforeach
@@ -75,10 +77,14 @@
                                 <tbody>
                                     @foreach( $detail_ver as $key => $ver)
                                         <tr>
-                                            <th>{{$ver->version_number}}</th>
-                                            <th> <button class="btn-sm btn-danger btn-outline-danger" >
-                                                    <i class="ti-trash"></i>
-                                                </button></th>   
+                                            <th>{{number_format((float)$ver->version_number, 1, '.', '')}}</th>
+                                            <th>
+                                            <a href="{{URL::to('/delete-version/'.$ver->version_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  >
+                                                    <button class="btn-sm btn-danger btn-outline-danger" >
+                                                            <i class="ti-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </th>   
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -287,7 +293,7 @@
                                                             
                                                             <th id="software_title" >{{$version->software_name}}</th>
                                                           
-                                                            <th id="software_number">{{$version->version_number}}</th>
+                                                            <th id="software_number">{}}</th>
                                                         
                                                             <td>  <a href="{{URL::to('/delete-version/'.$version->version_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
                                                               <i class="ti-trash" style="color:red"></i>

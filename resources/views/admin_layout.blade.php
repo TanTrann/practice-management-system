@@ -191,17 +191,35 @@
                                     </a>
                                 </li>
                                  <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Thời khóa biểu</div> 
-                                 <li class="pcoded-item pcoded-left-item">
-                                    <a href="{{URL('/all-schedule')}}">
-                                        <span class="pcoded-micon"><i class="ti-notepad"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Thời khóa biểu</span>
+                                 
+                                <li class="pcoded-hasmenu">
+                                    <a href="javascript:void(0)">
+                                        <span class="pcoded-micon"><i class="ti-notepad "></i></span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Thời khóa biểu</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
+                                    <ul class="pcoded-submenu">
+                                        <li class=" ">
+                                            <a href="{{URL('/all-schedule')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liệt kê</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                        <li class=" ">
+                                            <a href="{{URL('/manage-schedule')}}">
+                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Quản lý</span>
+                                                <span class="pcoded-mcaret"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
                                 </li>
                                 <li class="pcoded-item pcoded-left-item">
                                     <a href="{{URL('/all-room')}}">
                                         <span class="pcoded-micon"><i class="ti-clipboard"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lí phòng</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lý phòng</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -210,7 +228,7 @@
                                 <li class="pcoded-item pcoded-left-item">
                                     <a href="{{URL('/all-software')}}">
                                         <span class="pcoded-micon"><i class="ti-clipboard"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lí phần mềm</span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lý phần mềm</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                 </li>
@@ -221,7 +239,7 @@
                                  <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lí học phần</span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý học phần</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -245,7 +263,7 @@
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lí lịch</span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý lịch</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -263,13 +281,13 @@
 
                             </ul>
                             
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Quản lí nhân sự</div>
+                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Quản lý nhân sự</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 
                                 <li class="pcoded-hasmenu">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lí cán bộ</span>
+                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý cán bộ</span>
                                         <span class="pcoded-mcaret"></span>
                                     </a>
                                     <ul class="pcoded-submenu">
@@ -289,7 +307,7 @@
                                         </li>
                                     </ul>
                                 </li>
-
+                                            
                                         
                                  
                                     </ul>
@@ -424,6 +442,24 @@ $('.showeditroom').click(function(){
     });
 });
 </script>
+<!-- Sửa pc -->
+<script type="text/javascript">   
+$('.edit-pc').click(function(){
+    var computer_id = $(this).data('id_computer');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/edit-pc')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{computer_id:computer_id, _token:_token},
+        success:function(data){
+        $('#computer_name').val(data.computer_name);
+        $('#computer_id').val(data.computer_id);
+        
+        }
+    });
+});
+</script>
 
 <!-- Sửa software -->
 <script type="text/javascript">   
@@ -510,6 +546,26 @@ $(document).ready( function () {
         });
           
     </script>
+    <script type="text/javascript">
+   
+   $( function() {
+     $( "#date_start" ).datepicker({
+         prevText:"Tháng trước",
+         nextText:"Tháng sau",
+         dateFormat:"yy-mm-dd",
+         dayNamesMin: [ "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật" ],
+         duration: "slow"
+     });
+     $( "#date_end" ).datepicker({
+         prevText:"Tháng trước",
+         nextText:"Tháng sau",
+         dateFormat:"yy-mm-dd",
+         dayNamesMin: [ "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật" ],
+         duration: "slow"
+     });
+   } );
+  
+ </script>
 </body>
 
 </html>

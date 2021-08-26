@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RoomDetails;
 use App\Models\Software;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
@@ -22,7 +23,7 @@ class SoftwareController extends Controller
 
     public function all_software(){
         $this->AuthLogin();
-        $all_software = DB::table('tbl_software')->orderBy('software_id','desc')->get();
+        $all_software = DB::table('tbl_software')->orderBy('software_id','DESC')->get();
         $all_version = DB::table('tbl_version')->join('tbl_software','tbl_version.software_id','=','tbl_software.software_id')->orderBy('version_id','desc')->get();
         $manager_software = view('admin.software.all_software')->with('all_software',$all_software)->with('all_version',$all_version);
         return view ('admin_layout')->with('admin.software.all_software',$manager_software);
@@ -39,7 +40,13 @@ class SoftwareController extends Controller
 
     public function delete_software($software_id){
         $this->AuthLogin();
+        $soft = DB::table('tbl_version')->where('software_id',$software_id)->get()->first();
+       
+        $id = $soft->version_id;
+        DB::table('tbl_room_details')->where('version_id',$id)->delete();
+        
         DB::table('tbl_software')->where('software_id',$software_id)->delete();
+        DB::table('tbl_version')->where('software_id',$software_id)->delete();
         Session::put('message','Xóa phần mềm thành công');
         return Redirect('all-software');
     }
@@ -90,21 +97,22 @@ class SoftwareController extends Controller
     public function delete_version($version_id){
         $this->AuthLogin();
         Version::where('version_id',$version_id)->delete();
-        Session::put('message','Xóa phần mềm thành công');
+        RoomDetails::where('version_id',$version_id)->delete();
+        Session::put('message','Xóa phiên bản thành công');
         return Redirect()->back();
     }
     public function software_detail($software_id){
         $this->AuthLogin(); 
         $all_version = DB::table('tbl_version')->join('tbl_software','tbl_version.software_id','=','tbl_software.software_id')->orderBy('version_id','desc')->get();
 
-        $all_software = DB::table('tbl_software')->orderBy('software_id','desc')->get();
-        $detail_software = DB::table('tbl_software')->where('software_id',$software_id)->get();
-        $detail_ver = DB::table('tbl_version')->where('software_id',$software_id)->get();
+        $all_software = DB::table('tbl_software')->orderBy('software_id','DESC')->get();
+        $detail_software = DB::table('tbl_software')->where('software_id',$software_id)->orderby('software_id','DESC')->get();
+        $detail_ver = DB::table('tbl_version')->where('software_id',$software_id)->orderby('version_number','DESC')->get();
         $manager_software = view('admin.software.software_detail')->with('detail_software',$detail_software)->with('detail_ver',$detail_ver)->with('all_software',$all_software)->with('all_version',$all_version);
         return view ('admin_layout')->with('admin.software.software_detail',$manager_software);
     }
    
-        
+   
     
 
     
