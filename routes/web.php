@@ -29,12 +29,27 @@ Route::get('/logout','App\Http\Controllers\AdminController@logout');
 
 //SCHEDULE
 // backend---------------------------------------------------------------------------
-Route::get('/all-schedule','App\Http\Controllers\ScheduleController@all_schedule');
-Route::get('/manage-schedule','App\Http\Controllers\ScheduleController@manage_schedule');
-Route::post('/update-schedule','App\Http\Controllers\ScheduleController@update_schedule');
+Route::get('/list-schedule','App\Http\Controllers\ScheduleController@list_schedule');
+Route::get('/manage-semester','App\Http\Controllers\ScheduleController@manage_semester');
+Route::post('/insert-schedule','App\Http\Controllers\ScheduleController@insert_schedule');
+Route::get('/unactive-hoc-ki/{schedule_id}','App\Http\Controllers\ScheduleController@unactive_hoc_ki');
+Route::get('/active-hoc-ki/{schedule_id}','App\Http\Controllers\ScheduleController@active_hoc_ki');
 // frontend---------------------------------------------------------------------------
 
+//SUBJECT
+// backend---------------------------------------------------------------------------
+Route::get('/list-schedule','App\Http\Controllers\ScheduleController@list_schedule');
+Route::get('/manage-subject','App\Http\Controllers\ScheduleController@manage_subject');
+Route::post('/insert-subject','App\Http\Controllers\ScheduleController@insert_subject');
+Route::get('/unactive-hoc-ki/{schedule_id}','App\Http\Controllers\ScheduleController@unactive_hoc_ki');
+Route::get('/active-hoc-ki/{schedule_id}','App\Http\Controllers\ScheduleController@active_hoc_ki');
+Route::get('/save-subject-schedule','App\Http\Controllers\ScheduleController@save_subject_schedule');
 
+// frontend---------------------------------------------------------------------------
+
+//USER
+//backend-----------------------------------------
+Route::get('/all-user','App\Http\Controllers\UserController@all_user');
 //ROOM
 //backend---------------------------------------------------------------------------
 Route::get('/all-room','App\Http\Controllers\RoomController@all_room');

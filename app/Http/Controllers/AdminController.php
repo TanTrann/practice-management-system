@@ -14,16 +14,16 @@ session_start();
 class AdminController extends Controller
 {
 	// public function AuthLogin(){
- //        $admin_id = Session::get('admin_id');
- //        if($admin_id){
+ //        $user_id = Session::get('user_id');
+ //        if($user_id){
  //            return Redirect('dashboard');
  //        }else{
  //            return Redirect('admin')->send();
  //        }
  //    }
     public function AuthLogin(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
+        $user_id = Session::get('user_id');
+        if($user_id){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
@@ -43,15 +43,15 @@ class AdminController extends Controller
     }
     
     public function dashboard(Request $request){
-        $admin_email = $request->admin_email;
-        $admin_password = md5($request->admin_password);
+        $user_name = $request->user_name;
+        $user_password = md5($request->user_password);
 
-        $result = DB::table('tbl_admin')->where('admin_email',$admin_email)->where('admin_password',$admin_password)->first();
+        $result = DB::table('tbl_user')->where('user_name',$user_name)->where('user_password',$user_password)->first();
 
        
         if ($result){
-    		Session::put('admin_name',$result->admin_name);
-    		Session::put('admin_id',$result->admin_id);
+    		Session::put('user_name',$result->user_name);
+    		Session::put('user_id',$result->user_id);
     		 return Redirect('/dashboard');
     	}else{
     		Session::put('message','Mật khẩu hoặc tài khoản không đúng.');
@@ -62,8 +62,8 @@ class AdminController extends Controller
 
     public function logout(){
         $this->AuthLogin();
-        Session::put('admin_name',null);
-        Session::put('admin_id',null);
+        Session::put('user_name',null);
+        Session::put('user_id',null);
         return Redirect('/admin');
     
     }

@@ -1,61 +1,37 @@
 @section('admin_content')
 @extends('admin_layout')
+<section class="wrapper">
 
-<div class="main-body">
-    <div class="page-wrapper">
-        <div class="page-body">
-             <!-- Front-icon Breadcrumb card start -->
-             <div class="card page-header p-0">
-                <div class="card-block front-icon-breadcrumb row align-items-end">
-                    <div class="breadcrumb-header col">
-                        <div class="big-icon">
-                            <i class="icofont icofont-home"></i>
-                        </div>
-                        <div class="d-inline-block">
-                        @foreach ($room_detail as $key => $value)  
-                            <h5><strong>{{$value->room_name}}</strong></h5>
-                            
-                            <h6> Tổng số máy : <strong style="color: red;">{{$count_pc}} </strong>|| Tổng số phần mềm: <strong style="color: red;">{{$count_software}}</strong> </h6>
+
+<div class="row mt">
+    <div class="col-sm-12">
+            <div class="showback">
+            @foreach ($room_detail as $key => $value) 
+              <h3><i class="fa fa-angle-right"></i>{{$value->room_name}} </h3>
+              <h5> Tổng số máy : <strong style="color: red;">{{$count_pc}} </strong>|| Tổng số phần mềm: <strong style="color: red;">{{$count_software}}</strong> </h5>
                             @endforeach
-                           
-                            
-                        </div>
-                        <br>
-                        <span id="session"> 
-                                            <?php
-                                            $message = Session::get('message');
-                                            if ($message){
-                                            echo '<span style="color:red; font-size:17px;">',$message.'</span>';
-                                                Session::put('message',null);
-                                                }
-                                            ?>
-                            </span>
-                    </div>
-                </div>
+                <span id="session"> 
+                    <?php
+                    $message = Session::get('message');
+                    if ($message){
+                    echo '<span style="color:red; font-size:17px;">',$message.'</span>';
+                        Session::put('message',null);
+                        }
+                    ?>
+                </span>
             </div>
-            <!-- Front-icon Breadcrumb card end -->
-            <div class="row">    
-                <div class="col-md-12 col-xl-6">
-                <div class="card">
-                <div class="card-header">
-                <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#them-may" style="float: right;">Thêm máy</button>    </div>
-                
-                            <h4> Thông tin máy</h4>
-                           
-                                        
-                            <div class="card-header-right ">
-                               
-                            </div>
-                            <br>
-                            <div class="card-header-left">
-                                Tất cả máy
-                            </div>
-                            
-                        </div>
-                    
-                        <div class="card-block">
-                            <div id="statestics-chart" style="height:517px;">
-                                <table class="table table-hover"  id="mytable2" >
+            
+           
+    </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <!--  BASIC PROGRESS BARS -->
+            <div class="showback">
+            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#them-may" style="float: right;">Thêm máy</button>
+            <h3>Thông tin máy</h3>        
+                <div class="card-header-left">
+                    Tất cả máy
+                </div>
+            <table class="table table-hover"  id="mytable2" >
                                     <thead>
                                         <tr>
                                             <th>ID</th>
@@ -75,11 +51,11 @@
                                             <td>
 
                                             <button class="btn-sm btn-primary btn-outline-primary edit-pc" data-toggle="modal" data-target="#edit-pc" data-id_computer="{{$pc->computer_id}}">
-                                                            <i class="ti-pencil"></i>
+                                                            <i class="fa fa-pencil"></i>
                                                         </button>    
-                                            <a href="{{URL::to('/delete-pc/'.$pc->computer_id)}}"   onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
+                                            <a href="{{URL::to('/delete-pc/'.$pc->computer_id)}}"   onclick="return confirm('Bạn có chắc là muốn xóa máy này?')"  >
                                                 <button class="btn-sm btn-danger btn-outline-danger">
-                                                            <i class="ti-trash"></i>
+                                                            <i class="fa fa-trash"></i>
                                                 </button>
                                             </a>
                                             </td>
@@ -89,96 +65,72 @@
                                         
                                     </tbody>
                                 </table>
-                            </div>
-                        </div>
-                </div>
             </div>
-               
+            <!--/showback -->
+          
             
-                <!-- Statestics Start -->
-                <div class="col-md-12 col-xl-6">
-                <div class="card">
-                <div class="card-header">
-                <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software-room" style="float: right;">Thêm phần mềm</button>    </div>
-                
-                            <h4> Thông tin phần mềm</h4>
-                            <span id="data_service_quickview_title"> 
-                                            <?php
-                                            $message = Session::get('message');
-                                            if ($message){
-                                            echo '<span style="color:red; font-size:17px;">',$message.'</span>';
-                                                Session::put('message',null);
-                                                }
-                                            ?>
-                                        </span>
-                            <br>
-                                        
-                            <div class="card-header-right ">
-                               
-                            </div>
-                            <div class="card-header-left ">
-                                Tất cả phần mềm
-                            </div>
-                            
+            
+            
+          </div>
+          <!-- /col-lg-6 -->
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <!--  ALERTS EXAMPLES -->
+            <div class="showback">
+                <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software-room" style="float: right;">Thêm phần mềm</button> 
+                    <h3> Thông tin phần mềm</h3>
+                        <div class="card-header-left ">
+                            Tất cả phần mềm
                         </div>
-                
-                        <div class="card-block">
-                            <div id="statestics-chart" style="height:517px;">
-                                <table class="table table-hover"  id="mytable" >
-                                    <thead>
-                                        <tr>
-                                            
-                                            <th>Tên phần mềm</th>
-                                            <th>Phiên bản</th>
-                                            <th>Quản lý</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($ver_detail as $key => $sdetails)
-                                        <tr>
-                                            
-                                            <td>{{$sdetails->software_name}}</td>
-                                          
-                                            <td>{{number_format((float)$sdetails->version_number, 1, '.', '')}}</td>
-                                            <td>
-                                            <a href="{{URL::to('/delete-soft-room/'.$sdetails->room_details_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
-                                                <button class="btn-sm btn-danger btn-outline-danger">
-                                                            <i class="ti-trash"></i>
-                                                </button>
-                                            </a>
-                                            </td>
-                                            @endforeach
-                                        </tr>
+                            <table class="table table-hover"  id="mytable" >
+                                <thead>
+                                    <tr>
                                         
+                                        <th>Tên phần mềm</th>
+                                        <th>Phiên bản</th>
+                                        <th>Quản lý</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($ver_detail as $key => $sdetails)
+                                    <tr>
                                         
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                        <td>{{$sdetails->software_name}}</td>
+                                        
+                                        <td>{{number_format((float)$sdetails->version_number, 1, '.', '')}}</td>
+                                        <td>
+                                        <a href="{{URL::to('/delete-soft-room/'.$sdetails->room_details_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
+                                            <button class="btn-sm btn-danger btn-outline-danger">
+                                                        <i class="fa fa-trash"></i>
+                                            </button>
+                                        </a>
+                                        </td>
+                                        @endforeach
+                                    </tr>
+                                    
+                                    
+                                </tbody>
+                            </table>
+            </div>
+            <!-- /showback -->
 
-
-
-         
+          
+          
+          <!-- /col-lg-6 -->
         </div>
-    </div>
-</div>
-                    <!-- Modal thêm phần mềm-->
+        <!--/ row -->
+      </section>
+             <!-- Modal thêm phần mềm-->
 <div class="modal fade" id="add-software-room" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
+            
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm phần mềm</Strong>           
-           
-               
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Thêm máy </h4>
             </div>
+          
+            
             <div class="modal-body">
             
             <div class="row">
@@ -244,16 +196,12 @@
  <div class="modal fade" id="them-may" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
+            
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm máy</Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Thêm máy </h4>
             </div>
+          
             <div class="modal-body">
             
             <div class="row">
@@ -270,7 +218,7 @@
                             </div>
                         </div>
                                                 @foreach($room_detail as $key => $roomval)
-                                <input name="room_id" type="text" class="form-control" value="{{$roomval->room_id}}">
+                                <input name="room_id" type="hidden" class="form-control" value="{{$roomval->room_id}}">
                                                 @endforeach
                     
                 </div>        
@@ -290,16 +238,12 @@
  <div class="modal fade" id="edit-pc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
+            
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Cập nhật máy</Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Cập nhật máy </h4>
             </div>
+          
             <div class="modal-body">
             
             <div class="row">
@@ -336,5 +280,5 @@
         </div>
         </div>
     </div> </div>
-       <!-- Modal thêm phần mềm-->        
+       <!-- Modal thêm phần mềm-->      
 @endsection

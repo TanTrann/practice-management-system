@@ -2,400 +2,454 @@
 <html lang="en">
 
 <head>
-    <title>Trang admin</title>
-    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <!-- Meta -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="description" content="CodedThemes">
-      <meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
-      <meta name="author" content="CodedThemes">
-      <!-- Favicon icon -->
-      <link rel="icon" href="{{asset('/public/backend/assets/images/favicon.ico')}}" type="image/x-icon">
-      <!-- Google font-->
-      <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:400,600')}}" rel="stylesheet">
-      <!-- Required Fremwork -->
-      <link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/css/bootstrap/css/bootstrap.min.css')}}">
-      <!-- themify-icons line icon -->
-      <link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/icon/themify-icons/themify-icons.css')}}">
-      <!-- ico font -->
-      <link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/icon/icofont/css/icofont.css')}}">
-     
-        <!-- Style.css -->
-      <link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/css/style.css')}}">
-      <link rel="stylesheet" type="text/css" href="{{asset('public/backend/assets/css/jquery.mCustomScrollbar.css')}}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>HTQLTH-CTU</title>
 
-      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-      
-  </head>
+  <!-- Favicons -->
+  <link href="{{asset('public/backend/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('public/backend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
-  <body>
-    <!-- Pre-loader start -->
-    <div class="theme-loader">
-        <div class="ball-scale">
-            <div class='contain'>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
+  <!-- Bootstrap core CSS -->
+  <link href="{{asset('public/backend/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <!--external css-->
+  <link href="{{asset('public/backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="{{asset('public/backend/css/zabuto_calendar.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('public/backend/lib/gritter/css/jquery.gritter.css')}}" />
+  <!-- Custom styles for this template -->
+  <link href="{{asset('public/backend/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('public/backend/css/style-responsive.css')}}" rel="stylesheet">
+  <script src="{{asset('public/backend/lib/chart-master/Chart.js')}}"></script>
 
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-                <div class="ring">
-                    <div class="frame"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pre-loader end -->
-    <div id="pcoded" class="pcoded">
-        <div class="pcoded-overlay-box"></div>
-        <div class="pcoded-container navbar-wrapper">
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 
-            <nav class="navbar header-navbar pcoded-header">
-                <div class="navbar-wrapper">
+  <!-- =======================================================
+    Template Name: Dashio
+    Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
+    Author: TemplateMag.com
+    License: https://templatemag.com/license/
+  ======================================================= -->
+</head>
 
-                    <div class="navbar-logo">
-                        <a class="mobile-menu" id="mobile-collapse" href="#">
-                            <i class="ti-menu"></i>
-                        </a>
-                        <a class="mobile-search morphsearch-search" href="#">
-                            <i class="ti-search"></i>
-                        </a>
-                        <a href="{{URL('/dashboard')}}">
-                            <img class="img-fluid" src="public/backend/assets/images/logo.png" alt="Theme-Logo" />
-                        </a>
-                        <a class="mobile-options">
-                            <i class="ti-more"></i>
-                        </a>
+<body>
+  <section id="container">
+    <!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="index.html" class="logo"><b>QLTH<span>CTU</span></b></a>
+      <!--logo end-->
+      <div class="nav notify-row" id="top_menu">
+        <!--  notification start -->
+        <ul class="nav top-menu">
+          <!-- settings start -->
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-tasks"></i>
+              <span class="badge bg-theme">4</span>
+              </a>
+            <ul class="dropdown-menu extended tasks-bar">
+              <div class="notify-arrow notify-arrow-green"></div>
+              <li>
+                <p class="green">You have 4 pending tasks</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Dashio Admin Panel</div>
+                    <div class="percent">40%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                      <span class="sr-only">40% Complete (success)</span>
                     </div>
-
-                    <div class="navbar-container container-fluid">
-                        <ul class="nav-left">
-                            <li>
-                                <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
-                            </li>
-
-                            <li>
-                                <a href="#!" onclick="javascript:toggleFullScreen()">
-                                    <i class="ti-fullscreen"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav-right">
-                            
-                            <li class="user-profile header-notification">
-                                <a href="#!">
-                                    <img src="public/backend/assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                    <span>
-                                        <?php
-                                        $name = Session::get('admin_name');
-                                        if ($name){
-                                            echo $name;
-                                        }
-                                        ?>
-                                    </span>
-                                    <i class="ti-angle-down"></i>
-                                </a>
-                                <ul class="show-notification profile-notification">
-                                    {{-- <li>
-                                        <a href="#!">
-                                            <i class="ti-settings"></i> Settings
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-user"></i> Profile
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-email"></i> My Messages
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ti-lock"></i> Lock Screen
-                                        </a>
-                                    </li> --}}
-                                    <li>
-                                        <a href="{{URL::to('/logout')}}">
-                                            <i class="ti-layout-sidebar-left"></i> Đăng xuất
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Database Update</div>
+                    <div class="percent">60%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                      <span class="sr-only">60% Complete (warning)</span>
                     </div>
-                </div>
-            </nav>
-            <div class="pcoded-main-container">
-                <div class="pcoded-wrapper">
-                    <nav class="pcoded-navbar">
-                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                        <div class="pcoded-inner-navbar main-menu">
-                            <div class="">
-                                <!-- <div class="main-menu-header">
-                                    <img class="img-40 img-radius" src="public/backend/assets/images/avatar-4.jpg" alt="User-Profile-Image">
-                                    <div class="user-details">
-                                        <span>John Doe</span>
-                                        <span id="more-details">UX Designer<i class="ti-angle-down"></i></span>
-                                    </div>
-                                </div>
-
-                                <div class="main-menu-content">
-                                    <ul>
-                                        <li class="more-details">
-                                            <a href="#"><i class="ti-user"></i>View Profile</a>
-                                            <a href="#!"><i class="ti-settings"></i>Settings</a>
-                                            <a href="auth-normal-sign-in.html"><i class="ti-layout-sidebar-left"></i>Logout</a>
-                                        </li>
-                                    </ul>
-                                </div> -->
-                            </div>
-                            
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Menu</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                <li class="active">
-                                    <a href="{{URL('/dashboard')}}">
-                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Trang chủ</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                                 <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Thời khóa biểu</div> 
-                                 
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-notepad "></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Thời khóa biểu</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{URL('/all-schedule')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liệt kê</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{URL('/manage-schedule')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Quản lý</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                </li>
-                                <li class="pcoded-item pcoded-left-item">
-                                    <a href="{{URL('/all-room')}}">
-                                        <span class="pcoded-micon"><i class="ti-clipboard"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lý phòng</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-                               
-
-                                <li class="pcoded-item pcoded-left-item">
-                                    <a href="{{URL('/all-software')}}">
-                                        <span class="pcoded-micon"><i class="ti-clipboard"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Quản lý phần mềm</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                </li>
-
-                                
-
-                                
-                                 <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý học phần</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{URL('/all-room')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liệt kê</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{URL('/add-room')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Thêm Học phần</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý lịch</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{URL('/all-room')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liệt kê</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                       
-                                    </ul>
-
-                                </li>
-
-                            </ul>
-                            
-                            <div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Quản lý nhân sự</div>
-                            <ul class="pcoded-item pcoded-left-item">
-                                
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
-                                        <span class="pcoded-mtext"  data-i18n="nav.basic-components.main">Quản lý cán bộ</span>
-                                        <span class="pcoded-mcaret"></span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="{{URL('/all-data-room')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">Liệt kê</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="{{URL('/add-data-room')}}">
-                                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
-                                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Thêm cán bộ</span>
-                                                <span class="pcoded-mcaret"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                            
-                                        
-                                 
-                                    </ul>
-                                </li>
-                            </ul>
-
-                          
-
-                            
-                    </nav>
-                    <div class="pcoded-content">
-                        
-                        @yield('admin_content')
-        </div>
-
-        <!-- Warning Section Starts -->
-        <!-- Older IE warning message -->
-    <!--[if lt IE 9]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
+                  </div>
                 </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Product Development</div>
+                    <div class="percent">80%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                      <span class="sr-only">80% Complete</span>
+                    </div>
+                  </div>
                 </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <div class="task-info">
+                    <div class="desc">Payments Sent</div>
+                    <div class="percent">70%</div>
+                  </div>
+                  <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                      <span class="sr-only">70% Complete (Important)</span>
+                    </div>
+                  </div>
                 </a>
-            </li>
+              </li>
+              <li class="external">
+                <a href="#">See All Tasks</a>
+              </li>
+            </ul>
+          </li>
+          <!-- settings end -->
+          <!-- inbox dropdown start-->
+          <li id="header_inbox_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-envelope-o"></i>
+              <span class="badge bg-theme">5</span>
+              </a>
+            <ul class="dropdown-menu extended inbox">
+              <div class="notify-arrow notify-arrow-green"></div>
+              <li>
+                <p class="green">You have 5 new messages</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Zac Snider</span>
+                  <span class="time">Just now</span>
+                  </span>
+                  <span class="message">
+                  Hi mate, how is everything?
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Divya Manian</span>
+                  <span class="time">40 mins.</span>
+                  </span>
+                  <span class="message">
+                  Hi, I need your help with this.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Dan Rogers</span>
+                  <span class="time">2 hrs.</span>
+                  </span>
+                  <span class="message">
+                  Love your new Dashboard.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
+                  <span class="subject">
+                  <span class="from">Dj Sherman</span>
+                  <span class="time">4 hrs.</span>
+                  </span>
+                  <span class="message">
+                  Please, answer asap.
+                  </span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">See all messages</a>
+              </li>
+            </ul>
+          </li>
+          <!-- inbox dropdown end -->
+          <!-- notification dropdown start-->
+          <li id="header_notification_bar" class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <i class="fa fa-bell-o"></i>
+              <span class="badge bg-warning">7</span>
+              </a>
+            <ul class="dropdown-menu extended notification">
+              <div class="notify-arrow notify-arrow-yellow"></div>
+              <li>
+                <p class="yellow">You have 7 new notifications</p>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                  Server Overloaded.
+                  <span class="small italic">4 mins.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-warning"><i class="fa fa-bell"></i></span>
+                  Memory #2 Not Responding.
+                  <span class="small italic">30 mins.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                  Disk Space Reached 85%.
+                  <span class="small italic">2 hrs.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">
+                  <span class="label label-success"><i class="fa fa-plus"></i></span>
+                  New User Registered.
+                  <span class="small italic">3 hrs.</span>
+                  </a>
+              </li>
+              <li>
+                <a href="index.html#">See all notifications</a>
+              </li>
+            </ul>
+          </li>
+          <!-- notification dropdown end -->
+        </ul>
+        <!--  notification end -->
+      </div>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
             <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
+                <a class="logout" href="{{URL::to('/logout')}}">
+                    <i class="ti-layout-sidebar-left"></i> Đăng xuất
                 </a>
             </li>
         </ul>
-    </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-<!-- Warning Section Ends -->
-<!-- Required Jquery -->
-<script type="text/javascript" src="{{asset('public/backend/assets/js/jquery/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/backend/assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/backend/assets/js/popper.js/popper.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/backend/assets/js/bootstrap/js/bootstrap.min.js')}}"></script>
-<!-- jquery slimscroll js -->
-<script type="text/javascript" src="{{asset('public/backend/assets/js/jquery-slimscroll/jquery.slimscroll.js')}}"></script>
-<!-- modernizr js -->
-<script type="text/javascript" src="{{asset('public/backend/assets/js/modernizr/modernizr.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/backend/assets/js/modernizr/css-scrollbars.js')}}"></script>
-<!-- classie js -->
-<script type="text/javascript" src="{{asset('public/backend/assets/js/classie/classie.js')}}"></script>
-<!-- am chart -->
-<script src="{{asset('public/backend/assets/pages/widget/amchart/amcharts.min.js')}}"></script>
-<script src="{{asset('public/backend/assets/pages/widget/amchart/serial.')}}{{asset('public/backend/min.js')}}"></script>
-<!-- Todo js -->
-<script type="text/javascript " src="{{asset('public/backend/assets/pages/todo/todo.js')}} "></script>
-<!-- Custom js -->
-<script type="text/javascript" src="{{asset('public/backend/assets/pages/dashboard/custom-dashboard.js')}}"></script>
-<script type="text/javascript" src="{{asset('public/backend/assets/js/script.js')}}"></script>
-<script type="text/javascript " src="{{asset('public/backend/assets/js/SmoothScroll.js')}}"></script>
-<script src="{{asset('public/backend/assets/js/pcoded.min.js')}}"></script>
-<script src="{{asset('public/backend/assets/js/demo-12.js')}}"></script>
-<script src="{{asset('public/backend/assets/js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+      </div>
+    </header>
+    <!--header end-->
+    <!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+      <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu" id="nav-accordion">
+          <p class="centered"><a href="profile.html"><img src="public/backend/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+          <h5 class="centered">
+            <?php
+                $name = Session::get('user_name');
+                if ($name){
+                    echo $name;
+                }
+            ?>
+          </h5>
+          <li class="mt">
+            <a class="" href="{{URL('/dashboard')}}">
+              <i class="fa fa-dashboard"></i>
+              <span>Trang chủ</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-th"></i>
+              <span>Thời khóa biểu</span>
+              </a>
+            <ul class="sub">
+              <li><a href="{{URL('/list-schedule')}}">Liệt kê</a></li>
+              <li><a href="{{URL('/manage-semester')}}">Quản lý học kì</a></li>
+              <li><a href="{{URL('/manage-subject')}}">Quản lý môn học</a></li>
 
+            </ul>
+          </li>
+         
+          <li>
+            <a href="{{URL('/all-room')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Quản lý phòng</span>
+              </a>
+          </li>
+         
+          <li>
+            <a href="{{URL('/all-software')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Quản lý phần mềm</span>
+              </a>
+          </li>
+          <li>
+            <a href="{{URL('/all-user')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Quản lý USER</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-cogs"></i>
+              <span>Quản lý USER</span>
+              </a>
+            <ul class="sub">
+              <li><a href="grids.html">Grids</a></li>
+              <li><a href="calendar.html">Calendar</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="todo_list.html">Todo List</a></li>
+              <li><a href="dropzone.html">Dropzone File Upload</a></li>
+              <li><a href="inline_editor.html">Inline Editor</a></li>
+              <li><a href="file_upload.html">Multiple File Upload</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-book"></i>
+              <span>Extra Pages</span>
+              </a>
+            <ul class="sub">
+              <li><a href="blank.html">Blank Page</a></li>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="lock_screen.html">Lock Screen</a></li>
+              <li><a href="profile.html">Profile</a></li>
+              <li><a href="invoice.html">Invoice</a></li>
+              <li><a href="pricing_table.html">Pricing Table</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="404.html">404 Error</a></li>
+              <li><a href="500.html">500 Error</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-tasks"></i>
+              <span>Forms</span>
+              </a>
+            <ul class="sub">
+              <li><a href="form_component.html">Form Components</a></li>
+              <li><a href="advanced_form_components.html">Advanced Components</a></li>
+              <li><a href="form_validation.html">Form Validation</a></li>
+              <li><a href="contactform.html">Contact Form</a></li>
+            </ul>
+          </li>
+         
+          <li>
+            <a href="inbox.html">
+              <i class="fa fa-envelope"></i>
+              <span>Mail </span>
+              <span class="label label-theme pull-right mail-info">2</span>
+              </a>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class=" fa fa-bar-chart-o"></i>
+              <span>Charts</span>
+              </a>
+            <ul class="sub">
+              <li><a href="morris.html">Morris</a></li>
+              <li><a href="chartjs.html">Chartjs</a></li>
+              <li><a href="flot_chart.html">Flot Charts</a></li>
+              <li><a href="xchart.html">xChart</a></li>
+            </ul>
+          </li>
+          <li class="sub-menu">
+            <a href="javascript:;">
+              <i class="fa fa-comments-o"></i>
+              <span>Chat Room</span>
+              </a>
+            <ul class="sub">
+              <li><a href="lobby.html">Lobby</a></li>
+              <li><a href="chat_room.html"> Chat Room</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="google_maps.html">
+              <i class="fa fa-map-marker"></i>
+              <span>Google Maps </span>
+              </a>
+          </li>
+        </ul>
+        <!-- sidebar menu end-->
+      </div>
+    </aside>
+    <!--sidebar end-->
+    <section id="main-content">
+    @yield('admin_content')
+    </section>
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script src="{{asset('/public/backend/lib/jquery/jquery.min.js')}}"></script>
+
+  <script src="{{asset('public/backend/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script class="include" type="text/javascript" src="{{asset('public/backend/lib/jquery.dcjqaccordion.2.7.js')}}"></script>
+  <script src="{{asset('public/backend/lib/jquery.scrollTo.min.js')}}"></script>
+  <script src="{{asset('public/backend/lib/jquery.nicescroll.js')}}" type="text/javascript"></script>
+  <script src="{{asset('public/backend/lib/jquery.sparkline.js')}}"></script>
+  <!--common script for all pages-->
+  <script src="{{asset('public/backend/lib/common-scripts.js')}}"></script>
+  <script type="text/javascript" src="{{asset('public/backend/lib/gritter/js/jquery.gritter.js')}}"></script>
+  <script type="text/javascript" src="{{asset('public/backend/lib/gritter-conf.js')}}"></script>
+  <!--script for this page-->
+  <script src="{{asset('public/backend/lib/sparkline-chart.js')}}"></script>
+  <script src="{{asset('public/backend/lib/zabuto_calendar.js')}}"></script>
+ 
+  
 <script src="{{asset('public/backend/ckeditor/ckeditor.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+  <script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
 
-<script>
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+  <script>
 var $window = $(window);
 var nav = $('.fixed-button');
     $window.scroll(function(){
@@ -546,6 +600,28 @@ $(document).ready( function () {
         });
           
     </script>
+
+    <!-- Thêm học phần -->
+<script type="text/javascript">   
+$('.dangkyphong').click(function(){
+    var room_id = $(this).data('id_room');
+    var week_id = $(this).data('id_week');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/dang-ky-phong')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{room_id:room_id, _token:_token},
+        success:function(data){
+        $('#room_quickview_title').val(data.room_name);
+        $('#room_quickview_id').val(data.room_id);
+        $('#tuan').val(data.tuan);
+        $('#room_quickview_quantity').val(data.room_quantity);
+        
+        }
+    });
+});
+</script>
     <script type="text/javascript">
    
    $( function() {

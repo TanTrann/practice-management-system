@@ -1,69 +1,86 @@
 @section('admin_content')
 @extends('admin_layout')
-
-  <!-- Material tab card start -->
-  <div class="pcoded-inner-content">
-
-    <div class="card">
-    <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-room" style="float: right;">Thêm phòng</button>    <div class="card-header-left">
-        <div class="card-header">
-                                <h3>Quản lí phòng</h3>
-                                <?php
-            $message = Session::get('message');
-            if ($message){
-            echo '<span style="color:red; font-size:17px;">',$message.'</span>';
-                Session::put('message',null);
-                }
-        ?>
-                                <div class="card-header-right">    <ul class="list-unstyled card-option">        <li><i class="icofont icofont-simple-left "></i></li>        <li><i class="icofont icofont-maximize full-card"></i></li>        <li><i class="icofont icofont-minus minimize-card"></i></li>        <li><i class="icofont icofont-refresh reload-card"></i></li>        <li><i class="icofont icofont-error close-card"></i></li>    </ul></div>
-                            </div>
-       
-    <div class="card-block">
-        <div class="row">
-        @foreach($all_room as $key => $room)
-            <div class="col-lg-4 col-xl-3 col-sm-6">
-              
-                <div class="badge-box ">
-                    <div class="sub-title">{{$room->room_name}} 
-                        <a href="{{URL::to('/delete-room/'.$room->room_id)}}" style="float: right;">
-                        <button onclick="return confirm('Bạn có chắc là muốn xóa phòng này?')"  type="submit" name="delete_room" style="padding-top: 5px;padding-right: 5px; margin-top: -5px;">
-                            <i class="ti-trash" style="color:red;padding-top: 11px;"></i>
-                        </button>
-                    </a>
-                    </div>
-                    <div> 
-                   <p style="text-align: center;"> <i class="ti-desktop" style="font-size: 103px"></i></p>
-                   
-                        
-                    </div>
-                    <div style="text-decoration: flex;">
-                    
-                    <button class="btn btn-primary btn-icon showeditroom " data-toggle="modal" data-target="#showeditroom"    data-id_room="{{$room->room_id}}" ><i class="ti-pencil " ></i></button>
-                    <a href="{{URL::to('/room-detail/'.$room->room_id)}}">
-                    <button class="btn btn-primary btn-round" style="float:right;">Chi tiết</button>
-                    </a>
-                    </div>
-                </div>
-                
-            </div>
-            @endforeach
-    </div>
-</div>
-
+<section class="wrapper site-min-height">
+        <h3><i class="fa fa-angle-right"></i>Quản lí phòng</h3>
+            <?php
+                $message = Session::get('message');
+                if ($message){
+                echo '<span style="color:red; font-size:17px;">',$message.'</span>';
+                    Session::put('message',null);
+                    }
+            ?>
+        <div class="row mt">
+          <div class="col-lg-12">
+            <!-- The file upload form used as target for the file upload widget -->
+            <span class="btn  ">
+                  
+            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-room" style="float: right;">Thêm phòng</button> 
+            </span>
+            <br>
+            <div class="content-panel">
+              <div class="panel-body">
+              @foreach($all_room as $key => $room)
+              <div class="col-md-3 col-sm-3 mb">
+                  
+            
+                <div class="grey-panel pn donut-chart">
            
+                  <div class="grey-header">
+                    <h5>{{$room->room_name}} </h5>
+                  </div>
+                  <i class="fa fa-desktop" style="font-size: 103px; padding-bottom: 30px;"></i>
+                  <script>
+                    var doughnutData = [{
+                        value: 70,
+                        color: "#FF6B6B"
+                      },
+                      {
+                        value: 30,
+                        color: "#fdfdfd"
+                      }
+                    ];
+                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                  </script>
+                  <div class="row">
+                    <div class="col-md-6">
+                    <button class="btn btn-primary btn-icon showeditroom " data-toggle="modal" data-target="#showeditroom"    data-id_room="{{$room->room_id}}" ><i class="fa fa-pencil " ></i></button>
+                        <a href="{{URL::to('/delete-room/'.$room->room_id)}}" >
+                        <button onclick="return confirm('Bạn có chắc là muốn xóa phòng này?')"  type="submit" name="delete_room" class="btn btn-theme04 delete">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            
+                        </button>
+                       
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{{URL::to('/room-detail/'.$room->room_id)}}">
+                            <button class="btn btn-primary">Chi tiết</button>
+                        </a>
+                    </div>
+                  </div>
+                 
+                </div>
+                <!-- /grey-panel -->
+                
+              </div>
+              @endforeach
+              </div>
+              
+            </div>
+            
+            <!-- /panel -->
+            <!-- The blueimp Gallery widget -->
+            
+          </div>
+        </div>
+                    
                         <!-- Modal thêm phòng-->
    <div class="modal fade" id="add-room" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
-        <div class="modal-content">
+        <div class="modal-content">                 
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm phòng    </Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Thêm phòng </h4>
             </div>
             <div class="modal-body">
             
@@ -151,4 +168,6 @@
 
     </div>
       <!-- Modal show edit room-->
+      </section>
+ 
 @endsection

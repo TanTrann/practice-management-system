@@ -13,8 +13,8 @@ use App\Models\Version;
 class SoftwareController extends Controller
 {
     public function AuthLogin(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
+        $user_id = Session::get('user_id');
+        if($user_id){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
@@ -104,7 +104,7 @@ class SoftwareController extends Controller
     public function software_detail($software_id){
         $this->AuthLogin(); 
         $all_version = DB::table('tbl_version')->join('tbl_software','tbl_version.software_id','=','tbl_software.software_id')->orderBy('version_id','desc')->get();
-
+        
         $all_software = DB::table('tbl_software')->orderBy('software_id','DESC')->get();
         $detail_software = DB::table('tbl_software')->where('software_id',$software_id)->orderby('software_id','DESC')->get();
         $detail_ver = DB::table('tbl_version')->where('software_id',$software_id)->orderby('version_number','DESC')->get();

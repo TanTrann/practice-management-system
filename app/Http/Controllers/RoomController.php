@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Model;
 class RoomController extends Controller
 {   
     public function AuthLogin(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
+        $user_id = Session::get('user_id');
+        if($user_id){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
@@ -27,7 +27,7 @@ class RoomController extends Controller
 
     public function all_room(){
         $this->AuthLogin();
-        $all_room = DB::table('tbl_room')->get();
+        $all_room = DB::table('tbl_room')->orderBy('room_name','asc')->get();
         $all_software = Software::get(); 
         $all_pc = DB::table('tbl_computer')->get();
         $manager_room = view('admin.room.all_room')->with('all_room',$all_room)->with('all_software',$all_software)->with('all_pc',$all_pc);
@@ -58,6 +58,7 @@ class RoomController extends Controller
         $this->AuthLogin();
         DB::table('tbl_room')->where('room_id',$room_id)->delete();
         DB::table('tbl_computer')->where('room_id',$room_id)->delete();
+        DB::table('tbl_room_details')->where('room_id',$room_id)->delete();
         Session::put('message','Xóa room thành công');
         return Redirect()->back();
     }

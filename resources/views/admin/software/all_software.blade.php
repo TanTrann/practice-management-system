@@ -1,12 +1,12 @@
 @section('admin_content')
 @extends('admin_layout')
-
-
-  <!-- Material tab card start -->
-<div class="pcoded-inner-content">
-    <div class="card">
-        <div class="pcoded-inner-content"><button type="button" class="btn-sm "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm phần mềm</button>    <div class="card-header-left">
-                                            <button type="button" class=" btn-sm  xemthem" data-toggle="modal" data-target="#xemthem" style="float: right;margin-right: 23px;" >Lịch sử thêm phiên bản</button><div class="card-header-left">
+<section class="wrapper">
+<div class="row mt">
+<div class="col-sm-12">
+    <div class="showback">
+         
+    <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm phần mềm</button>    <div class="card-header-left">
+                                            <button type="button" class=" btn btn-info  xemthem" data-toggle="modal" data-target="#xemthem" style="float: right;margin-right: 23px;" >Lịch sử thêm phiên bản</button><div class="card-header-left">
             <div class="card-header">
                 <h3>Quản lý phần mềm</h3>
                     <?php
@@ -43,15 +43,15 @@
                                                  
                                                     <td>
                                                         <button class="btn-sm btn-success btn-outline-success addversionsoftware" data-toggle="modal" data-target="#addversionsoftware" data-id_software="{{$value->software_id}}">
-                                                            <i class="ti-plus"></i>
+                                                            <i class="fa fa-plus"></i>
                                                         </button>
                                                         <button class="btn-sm btn-primary btn-outline-primary showeditsoftware" data-toggle="modal" data-target="#showeditsoftware" data-id_software="{{$value->software_id}}">
-                                                            <i class="ti-pencil"></i>
+                                                            <i class="fa fa-pencil"></i>
                                                         </button>
                                                         <a href="{{URL::to('/delete-software/'.$value->software_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
 
                                                             <button class="btn-sm btn-danger btn-outline-danger" >
-                                                                <i class="ti-trash"></i>
+                                                                <i class="fa fa-trash"></i>
                                                             </button>        
                                                         </a>
                                                     @endforeach
@@ -65,25 +65,20 @@
                             <!-- Hover table card end -->
                     
                 </div>
-                        
-            </div>
-        </div>
     </div>
-</div>
+            
+           
+    
  <!-- Modal thêm phần mềm-->
  <div class="modal fade" id="add-software" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
+            
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm phần mềm</Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Thêm phần mềm </h4>
             </div>
+       
             <div class="modal-body">
             
             <div class="row">
@@ -121,14 +116,9 @@
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Cập nhật tên phần mềm</Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Cập nhật tên phần mềm </h4>
+          
             </div>
             <div class="modal-body">
             
@@ -171,14 +161,12 @@
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm phiên bản</Strong>           
-                <span id="data_service_quickview_title"></span>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Thêm phiên bản </h4>
                 
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            
+           
+              
             </div>
             <div class="modal-body">
             
@@ -227,63 +215,57 @@
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title " >
-                  
-             Lịch sử phiên bản     
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Lịch sử phiên bản </h4>
             </div>
             <div class="modal-body">
             
             <div class="row">
-                <div class="col-sm-10" style="margin-left: 60px;">
+                <div class="col-sm-10" style="margin-left: 60px;padding-bottom: 203px;">
                     
                 
                     <form action="" method="post">
                         @csrf
                           <!-- Hover table card start -->
                           <input type="hidden" name="software_id" id="software_id" >   
-                          <div class="card">
-                                      
-                                        <div class="card-block table-border-style">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover" id="mytable2">
-                                              
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Tên phần mềm</th>
-                                                            <th>Phiên bản</th>
-                                                            <th>Xóa</th> 
-                                                        </tr>
-                                                        
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($all_version as $key => $version)
-                                                        <tr>
-                                                            
-                                                            <th id="software_title" >{{$version->software_name}}</th>
-                                                          
-                                                            <th id="software_number">{{number_format((float)$version->version_number, 1, '.', '')}}</th>
-                                                        
-                                                            <td>  <a href="{{URL::to('/delete-version/'.$version->version_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
-                                                              <i class="ti-trash" style="color:red"></i>
-                                                            </a></td>
-                                                          @endforeach
-                                                        </tr>
-                                                       
-                                                      
-                                                    </tbody>
-                                                  
-                                                </table>
-                                            </div>
-                                        </div>
+                            <div class="card">
+                                <div class="card-block table-border-style">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover" id="mytable2">
+                                        
+                                            <thead>
+                                                <tr>
+                                                    <th>Tên phần mềm</th>
+                                                    <th>Phiên bản</th>
+                                                    <th>Xóa</th> 
+                                                </tr>
+                                                
+                                            </thead>
+                                            <tbody>
+                                                @foreach($all_version as $key => $version)
+                                                <tr>
+                                                    
+                                                    <th id="software_title" >{{$version->software_name}}</th>
+                                                    
+                                                    <th id="software_number">{{number_format((float)$version->version_number, 1, '.', '')}}</th>
+                                                
+                                                    <td>  <a href="{{URL::to('/delete-version/'.$version->version_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
+                                                        <i class="fa fa-trash" style="color:red"></i>
+                                                    </a></td>
+                                                    @endforeach
+                                                </tr>
+                                                
+                                                
+                                            </tbody>
+                                            
+                                        </table>
                                     </div>
-                                   
+                                </div>
+                            </div>
+                    </form>              
                     
                 </div>        
-            
+            </div>
             
         </div>
                 <div class="modal-footer">
@@ -298,7 +280,7 @@
     </div>
      <!-- Xem thêm ver software-->  
     
-    
+                                </section>
 @endsection
 
 
