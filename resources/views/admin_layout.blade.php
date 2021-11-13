@@ -236,9 +236,9 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
             <li>
-                <a class="logout" href="{{URL::to('/logout')}}">
-                    <i class="ti-layout-sidebar-left"></i> Đăng xuất
-                </a>
+                  <a class="logout" href="{{URL::to('/logout')}}">
+                      <i class="ti-layout-sidebar-left"></i> Đăng xuất
+                  </a>
             </li>
         </ul>
       </div>
@@ -267,22 +267,27 @@
               <span>Trang chủ</span>
               </a>
           </li>
-          <li class="sub-menu">
-            <a href="javascript:;">
-              <i class="fa fa-th"></i>
-              <span>Thời khóa biểu</span>
+          <li>
+            <a href="{{URL('/manage-semester')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý học kì</span>
               </a>
-            <ul class="sub">
-              <li><a href="{{URL('/list-schedule')}}">Liệt kê</a></li>
-              <li><a href="{{URL('/manage-semester')}}">Quản lý học kì</a></li>
-              <li><a href="{{URL('/manage-subject')}}">Quản lý môn học</a></li>
-
-            </ul>
           </li>
-         
+          <li>
+            <a href="{{URL('/list-schedule')}}">
+              <i class="fa fa-calendar"></i>
+              <span>Quản lý thời khóa biểu</span>
+              </a>
+          </li>
+          <li>
+            <a href="{{URL('/manage-subject')}}">
+              <i class="fa fa-book"></i>
+              <span>Quản lý môn học</span>
+              </a>
+          </li>
           <li>
             <a href="{{URL('/all-room')}}">
-              <i class="fa fa-desktop"></i>
+              <i class="fa fa-server"></i>
               <span>Quản lý phòng</span>
               </a>
           </li>
@@ -295,11 +300,18 @@
           </li>
           <li>
             <a href="{{URL('/all-user')}}">
-              <i class="fa fa-desktop"></i>
+              <i class="fa fa-user"></i>
               <span>Quản lý USER</span>
               </a>
           </li>
-          <li class="sub-menu">
+          <li>
+            <a href="{{URL('/all-khoa')}}">
+              <i class="fa fa-user"></i>
+              <span>Quản lý khoa</span>
+              </a>
+          </li>
+          
+          <!-- <li class="sub-menu">
             <a href="javascript:;">
               <i class="fa fa-cogs"></i>
               <span>Quản lý USER</span>
@@ -378,7 +390,7 @@
               <i class="fa fa-map-marker"></i>
               <span>Google Maps </span>
               </a>
-          </li>
+          </li> -->
         </ul>
         <!-- sidebar menu end-->
       </div>
@@ -496,20 +508,41 @@ $('.showeditroom').click(function(){
     });
 });
 </script>
-<!-- Sửa pc -->
+<!-- Sửa hp -->
 <script type="text/javascript">   
-$('.edit-pc').click(function(){
-    var computer_id = $(this).data('id_computer');
+$('.show-edit-subject').click(function(){
+    var subject_id = $(this).data('id_subject');
     var _token = $('input[name="_token"]').val();
     $.ajax({
-    url:"{{url('/edit-pc')}}",
+    url:"{{url('/show-edit-subject')}}",
     method:"POST",
     dataType:"JSON",
-    data:{computer_id:computer_id, _token:_token},
+    data:{subject_id:subject_id, _token:_token},
         success:function(data){
-        $('#computer_name').val(data.computer_name);
-        $('#computer_id').val(data.computer_id);
+        $('#subject_id').val(data.subject_id);
+        $('#subject_name').val(data.subject_name);
+        $('#mahocphan').val(data.mahocphan);
         
+        }
+    });
+});
+</script>
+<!-- Sửa phan cong -->
+<script type="text/javascript">   
+$('.show-edit-phancong').click(function(){
+    var nhomhp_id = $(this).data('id_nhomhp');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-phancong')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{nhomhp_id:nhomhp_id, _token:_token},
+        success:function(data){
+        $('#user_id').val(data.user_id);
+        $('#subject_name').val(data.subject_name);
+        $('#mahocphan').val(data.mahocphan);
+        $('#soluong').val(data.soluong);
+        $('#nhom').val(data.nhom);
         }
     });
 });
@@ -529,6 +562,30 @@ $('.showeditsoftware').click(function(){
         $('#software_quickview_title').val(data.software_name);
         $('#software_quickview_id').val(data.software_id);
         $('#software_quickview_ver').val(data.software_ver);
+        
+        }
+    });
+});
+</script>
+
+<!-- Sửa info gv -->
+<script type="text/javascript">   
+$('.showedituser').click(function(){
+    var user_id = $(this).data('id_user');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-user')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{user_id:user_id, _token:_token},
+        success:function(data){
+        $('#user_name').val(data.user_name);
+        $('#user_id').val(data.user_id);
+        $('#id_user').val(data.id_user);
+        $('#user_email').val(data.user_email);
+        $('#user_password').val(data.user_password);
+        $('#user_address').val(data.user_address);
+        $('#user_phone').val(data.user_phone);
         
         }
     });

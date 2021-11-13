@@ -7,9 +7,9 @@
             <!--  BASIC PROGRESS BARS -->
             <div class="showback">
             <div class="card-header">
-            <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm học kì</button> 
+            <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm học phần</button> 
             <div class="card-header">
-                <h3>Danh sách học kì</h3>
+                <h3>Danh sách học phần</h3>
                     <?php
                                 $message = Session::get('message');
                                 if ($message){
@@ -29,11 +29,9 @@
                                           
                                             <thead>
                                                 <tr>    
-                                                    <th>ID</th>    
-                                                    <th>Tên học phần</th>
-                                                    <th>Số buổi</th>
-                                                    <th>Ngày bắt đầu</th>
-                                                    <th>Ngày kết thúc</th>
+                                                    <th>ID</th>   
+                                                    <th>Mã học phần</th> 
+                                                    <th>Tên học phần</th>  
                                                     <th>Quản lý</th>
                                                 </tr>
                                             </thead>
@@ -43,14 +41,15 @@
                                                            
                                                             <td>{{$val->subject_id}}</td>
                                                             <td>{{$val->subject_name}}</td>
-                                                            <td>{{$val->so_buoi}}</td>
-                                                            <td>{{$val->ngay_bd}}</td>
-                                                            <td>{{$val->ngay_kt}}</td>
+                                                            <td>{{$val->mahocphan}}</td>
                                                             <td>
-                                                                <button class="btn showeditsemester " data-toggle="modal" data-target="#showeditsemester"    data-id_subject="{{$val->subject_id}}" ><i class="fa fa-pencil " style="color: green;" ></i></button>
-                                                                <button class="btn" style="color: red;">
-                                                                <i class="fa fa-trash"></i>
-                                                                </button>
+                                                                <a href="{{URL::to('/qli-phan-cong/'.$val->subject_id)}}"><button class="btn" data-toggle="modal" ><i class="fa fa-info-circle" ></i></button></a>
+                                                                <button class="btn show-edit-subject" data-toggle="modal" data-target="#suahp"    data-id_subject="{{$val->subject_id}}" ><i class="fa fa-pencil " style="color: green;" ></i></button>
+                                                                    <a href="{{URL::to('/delete-subject/'.$val->subject_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa học phần này?')"  >
+                                                                        <button class="btn" style="color: red;">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                    </a>
                                                             </td>
                                                         </tr>
                                                         @endforeach
@@ -72,7 +71,116 @@
 </section>
      <!-- Xem thêm ver software-->  
     
+        
+       <!-- Modal add version software-->
+      
+    <div class="modal fade" id="nhomhp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg"  role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">Thông tin học phần</h4>
+                </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-11" style="margin-left: 33px;">
+                                    
+                                 
+                                    <button class="btn btn-primary show-phan-cong" style="float: right;margin-bottom: 10px;" data-toggle="modal"  data-id_subject="" data-target="#phancong">Phân công giảng dạy</button>
+                                    <h4>Nhóm học phần</h4>
+                                    <table class="table table-bordered table-striped table-condensed">
+                                    <tr>
+                                        <th>Tên học phần - Nhóm</th>
+                                        <th>Số lượng</th>
+                                        <th>Trạng thái</th>
+                                        <th>Cán bộ quản lý</th>
+                                        <th>Quản lý</th>
+                                    </tr>
+                                    <tr>
+                                        <td>LTDT - Nhóm 01</td>
+                                        <td>40 Sinh viên</td>
+                                        <td style="color: white; background-color: green;">Đã đăng ký </td>
+                                        <td>Nguyễn văn A</td>
+                                        <td> 
+                                            <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                                            <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                                           
+                                            <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                           
+                                        </td>
+                                    </tr>
+                           </table>             
+                    </div>            
+                </div>
+            </div>
+        </div>
+    </div> </div>
 
+    </div>
+     <!-- Modal add version software-->
+        
+ <!-- Modal thêm phần mềm-->
+ <div class="modal fade" id="phancong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg"  role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="myModalLabel">Phân công giảng dạy</h4>
+            </div>
+            <div class="modal-body">
+            
+            <div class="row">
+                <div class="col-sm-11" style="margin-left: 75px;">
+                    
+                
+                    <!-- form nhập tkb -->
+                    <form action="{{URL::to('phan-cong')}}" method="post">
+                        @csrf
+                       
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Mã - Tên cán bộ:</label>
+                            <div class="col-sm-7">
+                                
+                                <select class="form-control">
+                                    <option>Chọn cán bộ</option>
+                                    @foreach($all_user as $key => $user )
+                                        <option name="user_id" value="{{$user -> user_id}}">{{$user -> id_user}} - {{$user -> user_name}} </option>
+                                    @endforeach
+                                </select>
+                                    
+                            </div>
+                        </div>  
+                       
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Tên học phần:</label>
+                            <div class="col-sm-7">
+                                <input type="text" name="subject_name" class="form-control"
+                                placeholder="Nhập học phần"  disable>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Nhóm:</label>
+                            <div class="col-sm-7">
+                                <input type="text" name="Nhom" class="form-control"
+                                placeholder="Nhập nhóm">
+                            </div>
+                        </div>           
+                                      
+                            <!-- form nhập tkb end -->
+                </div>        
+            
+            
+        </div>
+                <div class="modal-footer">
+                <button type="submit" class="btn btn-primary phan-cong" >Thêm</button>
+                <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
+                </div>
+                </form>
+        </div>
+        </div>
+    </div> </div>
+       <!-- Modal thêm phần mềm-->
+     
  <!-- Modal thêm phần mềm-->
  <div class="modal fade" id="add-software" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg"  role="document">
@@ -92,33 +200,20 @@
                         @csrf
                        
                         <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Mã học phần:</label>
+                            <div class="col-sm-7">
+                                <input type="text" name="mahocphan" class="form-control"
+                                placeholder="Nhập học phần">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label class="col-sm-4 col-form-label">Tên học phần:</label>
                             <div class="col-sm-7">
                                 <input type="text" name="subject_name" class="form-control"
                                 placeholder="Nhập học phần">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Số buổi:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="so_buoi" class="form-control"
-                                placeholder="Nhập số buổi">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Ngày bắt đầu:</label>
-                            <div class="col-sm-7">
-                                <input type="date" name="ngay_bd" class="form-control"
-                                >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Ngày kết thúc:</label>
-                            <div class="col-sm-7">
-                                <input type="date" name="ngay_kt" class="form-control"
-                                >
-                            </div>
-                        </div>
+                       
                                       
                             <!-- form nhập tkb end -->
                 </div>        
@@ -134,138 +229,51 @@
         </div>
     </div> </div>
        <!-- Modal thêm phần mềm-->
-        
-       <!-- Modal add version software-->
-      
-    <div class="modal fade" id="addversionsoftware" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg"  role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Thêm phiên bản</Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            
-            <div class="row">
-                <div class="col-sm-11" style="margin-left: 75px;">
-                    
-                
-                    <form action="{{URL('/add-ver-software')}}" method="post">
-                        @csrf
-                        <div class="form-group row">
-                        <input type="hidden" name="software_id" id="software_id" >
-                        <span id="software_quickview_id"></span>
-                            <label class="col-sm-3 col-form-label">Tên phần mềm:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="software_title"
-                                placeholder="Nhập tên phần mềm" disabled>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Phiên bản:</label>
-                            <div class="col-sm-10">
-                                <input name="version_number" type="text" class="form-control" id="version_number"
-                                placeholder="Nhập phiên bản">
-                            </div>
-                        </div>
-                    
-                </div>        
-            
-            
-        </div>
-                <div class="modal-footer">
-                <button type="submit" class="btn btn-primary editbtn" >Thêm</button>
-                <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
-                    </form>
-                </div>
-        </div>
-        </div>
-    </div> </div>
-
-    </div>
-     <!-- Modal add version software-->
        <!--Xem thêm ver software-->
       
-       <div class="modal fade" id="xemthem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg"  role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title " >
-                  
-             Lịch sử phiên bản     
-            </h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-            
-            <div class="row">
-                <div class="col-sm-10" style="margin-left: 60px;">
-                    
-                
-                    <form action="" method="post">
-                        @csrf
-                          <!-- Hover table card start -->
-                          <input type="hidden" name="software_id" id="software_id" >   
-                          <div class="card">
-                                      
-                                        <div class="card-block table-border-style">
-                                            <div class="table-responsive">
-                                                <table class="table table-hover" id="mytable2">
-                                              
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Tên phần mềm</th>
-                                                            <th>Phiên bản</th>
-                                                            <th>Xóa</th> 
-                                                        </tr>
-                                                        
-                                                    </thead>
-                                                    <tbody>
-                                                      
-                                                        <tr>
-                                                            
-                                                            <th id="software_title" ></th>
-                                                          
-                                                            <th id="software_number"></th>
-                                                        
-                                                            <td>  <a href=""  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
-                                                              <i class="fa fa-trash" style="color:red"></i>
-                                                            </a></td>
-                                                          
-                                                        </tr>
-                                                       
-                                                      
-                                                    </tbody>
-                                                  
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                    
-                </div>        
-            
-            
-        </div>
-                <div class="modal-footer">
-       
-                <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
-                    </form>
-                </div>
-        </div>
-        </div>
-    </div> </div>
+       <div class="modal fade" id="suahp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg"  role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Chỉnh sửa học phần</h4>
+                    </div>
 
-    </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-10" style="margin-left: 60px;">
+                            <!-- form nhập tkb -->
+                            <form action="{{URL::to('/update-subject')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="subject_id"  id="subject_id" class="form-control">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Mã học phần:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="mahocphan"  id="mahocphan" class="form-control"
+                                        placeholder="Nhập học phần">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Tên học phần:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="subject_name" id="subject_name" class="form-control"
+                                        placeholder="Nhập học phần">
+                                    </div>
+                                </div>
+                            
+                                            
+                                    <!-- form nhập tkb end -->
+                        </div>        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary update-subject" >Chỉnh sửa</button>
+                        <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
+                                </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    
      <!-- Xem thêm ver software-->      
 
 

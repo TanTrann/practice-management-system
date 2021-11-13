@@ -10,11 +10,10 @@ class Users extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
-    	'id_user', 'user_name', 'user_password','user_phone'
+    	'id_user', 'user_name', 'user_password','user_phone','user_email','id_chucvu'
     ];
     protected $primaryKey = 'user_id';
  	protected $table = 'tbl_user';
 
- 	
  	
 }

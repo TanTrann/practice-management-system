@@ -28,6 +28,7 @@
                   <div class="grey-header">
                     <h5>{{$room->room_name}} </h5>
                   </div>
+                  <h5>Số lượng máy : <strong>{{$room->pc_quantity}}</strong> máy </h5>
                   <i class="fa fa-desktop" style="font-size: 103px; padding-bottom: 30px;"></i>
                   <script>
                     var doughnutData = [{
@@ -102,6 +103,13 @@
                             <div class="col-sm-10">
                                 <input name="pc_quantity" type="text" class="form-control"
                                 placeholder="Nhập số lượng">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Cấu hình máy:</label>
+                            <div class="col-sm-10">
+                                <textarea name="cauhinh" rows="6" class="form-control"
+                                placeholder="Nhập cấu hình"></textarea>
                             </div>
                         </div>
                         

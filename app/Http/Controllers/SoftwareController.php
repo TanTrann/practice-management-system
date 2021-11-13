@@ -14,10 +14,20 @@ class SoftwareController extends Controller
 {
     public function AuthLogin(){
         $user_id = Session::get('user_id');
-        if($user_id){
+        $id_chucvu = Session::get('id_chucvu');
+        if($user_id && $id_chucvu == 0){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
+        }
+    }
+    public function AuthLoginUser(){
+        $user_id = Session::get('user_id');
+        $id_chucvu = Session::get('id_chucvu');
+        if($user_id && $id_chucvu == 1){
+            return Redirect('trang-chu');
+        }else{
+            return Redirect('login-user')->send();
         }
     }
 
@@ -25,7 +35,7 @@ class SoftwareController extends Controller
         $this->AuthLogin();
         $all_software = DB::table('tbl_software')->orderBy('software_id','DESC')->get();
         $all_version = DB::table('tbl_version')->join('tbl_software','tbl_version.software_id','=','tbl_software.software_id')->orderBy('version_id','desc')->get();
-        $manager_software = view('admin.software.all_software')->with('all_software',$all_software)->with('all_version',$all_version);
+         $manager_software = view('admin.software.all_software')->with('all_software',$all_software)->with('all_version',$all_version);
         return view ('admin_layout')->with('admin.software.all_software',$manager_software);
     }
 

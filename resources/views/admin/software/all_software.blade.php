@@ -6,7 +6,7 @@
     <div class="showback">
          
     <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm phần mềm</button>    <div class="card-header-left">
-                                            <button type="button" class=" btn btn-info  xemthem" data-toggle="modal" data-target="#xemthem" style="float: right;margin-right: 23px;" >Lịch sử thêm phiên bản</button><div class="card-header-left">
+                                            <!-- <button type="button" class=" btn btn-info  xemthem" data-toggle="modal" data-target="#xemthem" style="float: right;margin-right: 23px;" >Lịch sử thêm phiên bản</button><div class="card-header-left"> -->
             <div class="card-header">
                 <h3>Quản lý phần mềm</h3>
                     <?php

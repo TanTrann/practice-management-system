@@ -52,11 +52,11 @@
                                                                 <?php
                                                                 if($val->schedule_status==0){
                                                                     ?>
-                                                                    <a href="{{URL::to('/unactive-hoc-ki/'.$val->schedule_id)}}"><i class="fa fa-thumb-up" style="font-size: 30px; color:green;"></i>Hiện</a>
+                                                                    <a href="{{URL::to('/unactive-hoc-ki/'.$val->schedule_id)}}"><i class="fa fa-thumb-up" style="font-size: 30px; color:green;"></i>Ẩn</a>
                                                                     <?php
                                                                     }else{
                                                                     ?>  
-                                                                    <a href="{{URL::to('/active-hoc-ki/'.$val->schedule_id)}}"><i class="fa fa-thumb-down" style="font-size: 30px; color:red;"></i>Ẩn</a>
+                                                                    <a href="{{URL::to('/active-hoc-ki/'.$val->schedule_id)}}"><i class="fa fa-thumb-down" style="font-size: 30px; color:red;"></i>Hiện</a>
                                                                     <?php
                                                                 }
                                                                 ?>

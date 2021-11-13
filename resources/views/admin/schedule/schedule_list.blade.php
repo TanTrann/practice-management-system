@@ -4,7 +4,7 @@
     <div class="row mt">
         <div class="col-sm-12">
             <div class="showback"> 
-            <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#dangkyphong" style="float: right;">Đăng ký phòng</button>  
+            <!-- <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#dangkyphong" style="float: right;">Đăng ký phòng</button>   -->
                <table>
             <h4><strong>THỜI KHÓA BIỂU</strong></h4> 
              @foreach ($all_schedule as $key => $value)
@@ -23,7 +23,7 @@
             </tr>
 
         </table>
-        @endforeach
+            @endforeach
                 <?php
                 $message = Session::get('message');
                 if ($message){
@@ -34,110 +34,89 @@
             </div>
         </div>
         <div class="col-sm-12">
-            <div class="showback">  
+        <div class="showback">  
                <!-- Nav tabs -->
                <ul class="nav nav-tabs  tabs" role="tablist">
-                    @foreach ($all_week as $key => $week)
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#{{$week->detail_semester_id}}" role="tab">{{$week->week}}</a>
-                        </li>
-                    @endforeach    
-                    </ul>
-            <!-- Tab panes -->
-            <div class="tab-content tabs card-block">
-            
-                @foreach ($all_week as $key => $week)
-                
-                <div class= " tab-pane" id="{{$week->detail_semester_id}}" role="tabpanel">
-                    
-                <table class="table tab-pane"  id="{{$week->detail_semester_id}}" role="tabpanel" >
-                    <thead>
-                        <tr>
-                            
-                            <th>Buổi</th>
-                            <th>Phòng</th>
-                            <th>Thứ 2</th>
-                            <th>Thứ 3</th>
-                            <th>Thứ 4</th>
-                            <th>Thứ 5</th>
-                            <th>Thứ 6</th>
-                            <th>Thứ 7</th>
-                            <th>Chủ nhật</th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                            <th rowspan="{{$count_room +1}}">Sáng</th> 
-                        </tr>
-                        @foreach ($all_room as $key=> $room)
-                        <tr>
-                           
-                            <td>{{($room->room_name)}}</td> 
-                         
-                           <th>
-                             
-                            </th>
-                            <th> 
-                               
-                                X
-                            </th>
-                            <th> 
-                                
-                                X
-                            </th>
-                            <th>  
-                            
-                                X
-                            </th>
-                           <th>
-                                X
-                            </th>
-                           <th> 
-                                X
-                            </th>
-                            <th>  
-                              
-                                X
-                            </th>
+                        @foreach ($all_week as $key => $week)
+                            <li class="nav-item">
+                                <a class="nav-link tkb" data-detail_semester_id="{{$week->detail_semester_id}}" data-toggle="tab" href="#{{$week->detail_semester_id}}" role="tab" name="tuan">{{$week->week}}</a>
+                                @csrf
+                            </li>
+                        @endforeach          
+                </ul>  <!-- Tab panes -->
+                                        <div class="tab-content tabs card-block" style="background-color: white;">  
+                                            @foreach ($all_week as $key => $week)
+                                                <div class= " tab-pane" id="{{$week->detail_semester_id}}" role="tabpanel">  
+                                                    <table class="table tab-pane"  id="{{$week->detail_semester_id}}" role="tabpanel" >
+                                                        
+                                                        <thead>
+                                                            <tr> 
+                                                                <th rowspan="3">Buổi</th>
+                                                                <th>Phòng</th>
+                                                                @foreach( $all_thu as $key => $thu)
+                                                                <th name="thu">{{($thu -> thu)}}</th>
+                                                                @endforeach
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach( $all_buoi as $key => $buoi)
+                                                                <tr>
+                                                                    <th rowspan="{{$count_room +1}}" name="buoi">{{($buoi-> buoi)}}</th> 
+                                                                </tr>
+                                                                @foreach ($all_room as $key=> $room)
+                                                                    <tr>
+                                                                        <td name="phong">
+                                                                            {{($room->room_name)}}
+                                                                        </td> 
+                                                                        @foreach( $all_thu as $key => $thu) 
+                                                                          
+                                                                        <th>
+                                                                            <div>
+                                                                                @foreach( $all_dki_phong as $key => $dki) 
+                                                                                
+                                                                                        <!-- Dieu kien 1 --> 
+                                                                                        <?php if($week->detail_semester_id == $dki->detail_semester_id ){ ?>
+                                                                                                <!-- Dieu kien 2 -->
+                                                                                                <?php if( $room->room_id == $dki->room_id ){ ?>
+                                                                                                    <!-- Dieu kien 3 -->
+                                                                                                    <?php if( $buoi->id_buoi == $dki->id_buoi){ ?>
+                                                                                                        <!-- Dieu kien 4 -->
+                                                                                                        <?php if( $thu->id_thu == $dki->id_thu){ ?>
+                                                                                                                Đã đăng kí
+                                                                                                        <?php }else{ ?> 
+                                                                                                              
+                                                                                                        <?php } ?>
+                                                                                                        <!-- End-Dieu kien 4 -->
+                                                                                                    <?php }else{ ?> 
+                                                                                                     
+                                                                                                    <?php } ?>
+                                                                                                    <!-- End-Dieu kien 3 -->
+                                                                                                <?php }else{ ?>  
+                                                                                                  
+                                                                                                <?php } ?>
+                                                                                                <!-- End-Dieu kien 2 -->
+                                                                                        <?php }else{ ?>  
 
-                           
+                                                                                        <?php } ?>
+                                                                                        <!-- End-Dieu kien 1 -->
 
-                        </tr>
-                        @endforeach 
-                        <tr>
-                            <th rowspan="{{$count_room +1}}">Chiều</th> 
-                        </tr>
-                        @foreach ($all_room as $key=> $room)
-                        <tr>
-                           
-                            <td>{{($room->room_name)}}</td> 
-                           <th> X
-                            </th>
-                            <th> 
-                                X
-                            </th>
-                            <th> 
-                                X
-                            </th>
-                           <th>
-                               X
-                            </th>
-                           <th> 
-                               X
-                            </th>
-                           <th>
-                               X
-                            </th>
-                           <th>
-                               X
-                            </th>
-                        </tr>
-                        @endforeach 
-                    </tbody>
-                </table>     
-            </div>
-            @endforeach 
-            </div>
+                                                                                    @endforeach     
+                                                                            </div>
+                                                                           
+                                                                        </th>
+                                                                       
+                                                                        @endforeach
+                                                                    </tr>
+                                                                @endforeach 
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>     
+                                                </div>
+                                            @endforeach 
+                                        </div>
+                                    </div> 
+                                    </div>
+        
             
         </div>
     </div>

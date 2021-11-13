@@ -40,7 +40,7 @@
                     {{csrf_field()}}
         <h2 class="form-login-heading">Đăng nhập</h2>
         <div class="login-wrap">
-          <input type="text" class="form-control" placeholder="Email" autofocus  name="user_name">
+          <input type="text" class="form-control" placeholder="Email" autofocus  name="id_user">
           <br>
           <input type="password" class="form-control" placeholder="Password"  name="user_password">
           <label class="checkbox">

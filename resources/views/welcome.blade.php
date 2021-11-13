@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VietPhone</title>
+    <title>HT-QLTH</title>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
     <!-- boxicons -->
     <link href={{asset('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css')}} rel='stylesheet'>
     <!-- app css -->
+    <link href="{{asset('public/backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('public/frontend/css/grid.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/app.css')}}">
+
+     <!-- Bootstrap core CSS -->
+  <link href="{{asset('public/frontend/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 </head>
 
 <body>
@@ -21,253 +25,79 @@
     <!-- header -->
     <header>
         <!-- mobile menu -->
-        <div class="mobile-menu bg-second">
-            <a href="URL('/')" class="mb-logo">VietPhone</a>
+        <div class="mobile-menu bg-second ">
+            <a href="URL('/')" class="mb-logo bg-second">HT-QLTH</a>
             <span class="mb-menu-toggle" id="mb-menu-toggle">
                 <i class='bx bx-menu'></i>
             </span>
         </div>
         <!-- end mobile menu -->
-        <!-- main header -->
-        <div class="header-wrapper" id="header-wrapper">
-            <span class="mb-menu-toggle mb-menu-close" id="mb-menu-close">
-                <i class='bx bx-x'></i>
-            </span>
-            <!-- top header -->
-            <div class="bg-second">
-                <div class="top-header container">
+        <!-- top header -->
+        <div class="bg-second">
+                <div class="top-header" style="padding-left: 100px;">
                     <ul class="devided">
                         <li>
-                            <a href="#">+840123456789</a>
+                            <a href="#">(84-292) 3832663</a>
                         </li>
                         <li>
-                            <a href="#">vietshop@mail.com</a>
+                            <a href="#">dhct@ctu.edu.vn.</a>
                         </li>
                     </ul>
-                    <ul class="devided">
-                        <li class="dropdown">
-                            <a href="">USD</a>
-                            <i class='bx bxs-chevron-down'></i>
-                            <ul class="dropdown-content">
-                                <li><a href="#">VND</a></li>
-                                <li><a href="#">JPY</a></li>
-                                <li><a href="#">EUR</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="">ENGLISH</a>
-                            <i class='bx bxs-chevron-down'></i>
-                            <ul class="dropdown-content">
-                                <li><a href="#">VIETNAMESE</a></li>
-                                <li><a href="#">JAPANESE</a></li>
-                                <li><a href="#">FRENCH</a></li>
-                                <li><a href="#">SPANISH</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">ORDER TRACKING</a></li>
-                    </ul>
+                   
                 </div>
             </div>
             <!-- end top header -->
+        <!-- main header -->
+       
+            <span class="mb-menu-toggle mb-menu-close" id="mb-menu-close">
+                <i class='bx bx-x'></i>
+            </span>
+            
             <!-- mid header -->
-            <div class="bg-main">
-                <div class="mid-header container">
-                    <a href="#" class="logo">ATShop</a>
+            
+            <div class="bg-main" >
+                <div class="mid-header container"  >
+                <ul class="user-menu">
+                    
+                    <img src="public\frontend\images\logo-ctu.png" alt="" style="max-width: 58%; ">
+                    
+                       
+                </ul>
+                <h1 style="margin-left: -68px;"><strong> Hệ thống quản lý</strong></h1>
+                    
                     <div class="search">
-                        <input type="text" placeholder="Search">
-                        <i class='bx bx-search-alt'></i>
+                                
                     </div>
-                    <ul class="user-menu">
-                        <li><a href="#"><i class='bx bx-bell'></i></a></li>
-                        <li><a href="#"><i class='bx bx-user-circle'></i></a></li>
-                        <li><a href="#"><i class='bx bx-cart'></i></a></li>
-                    </ul>
+                     
+                    <a href="{{URL::to('/trang-chu')}}">
+                    <button type="button" class="btn btn-primary"   style="float: right;color: black;"><i class="fa fa-home"></i> Trang chủ</button>  </a>                                          
+                    <div>
+                    <p>
+                    <?php
+                        $name = Session::get('user_name');
+                        if ($name){
+                            echo $name;
+                        }
+                    ?>
+                    </p>
+                   
+                        <a class="logout-user" href="{{URL::to('/logout-user')}}" >
+                        <i class="ti-layout-sidebar-left" ></i> Đăng xuất
+                        
+                        </a>
+                    </div>
+                    
                 </div>
+                
             </div>
             <!-- end mid header -->
-            <!-- bottom header -->
-            <div class="bg-second">
-                <div class="bottom-header container">
-                    <ul class="main-menu">
-                        <li><a href="#">home</a></li>
-                        <!-- mega menu -->
-                        <li class="mega-dropdown">
-                            <a href="./products.html">Shop<i class='bx bxs-chevron-down'></i></a>
-                            <div class="mega-content">
-                                <div class="row">
-                                    <div class="col-3 col-md-12">
-                                        <div class="box">
-                                            <h3>Categories</h3>
-                                            <ul>
-                                                <li><a href="#">Wireless</a></li>
-                                                <li><a href="#">Inear headphone</a></li>
-                                                <li><a href="#">Overear headphone</a></li>
-                                                <li><a href="#">sport headphone</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-md-12">
-                                        <div class="box">
-                                            <h3>Categories</h3>
-                                            <ul>
-                                                <li><a href="#">Wireless</a></li>
-                                                <li><a href="#">Inear headphone</a></li>
-                                                <li><a href="#">Overear headphone</a></li>
-                                                <li><a href="#">sport headphone</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-md-12">
-                                        <div class="box">
-                                            <h3>Categories</h3>
-                                            <ul>
-                                                <li><a href="#">Wireless</a></li>
-                                                <li><a href="#">Inear headphone</a></li>
-                                                <li><a href="#">Overear headphone</a></li>
-                                                <li><a href="#">sport headphone</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="col-3 col-md-12">
-                                        <div class="box">
-                                            <h3>Categories</h3>
-                                            <ul>
-                                                <li><a href="#">Wireless</a></li>
-                                                <li><a href="#">Inear headphone</a></li>
-                                                <li><a href="#">Overear headphone</a></li>
-                                                <li><a href="#">sport headphone</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row img-row">
-                                    <div class="col-3">
-                                        <div class="box">
-                                            <img src="public/frontend/images/kisspng-beats-electronics-headphones-apple-beats-studio-red-headphones.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="box">
-                                            <img src="public/frontend/images/JBL_TUNE220TWS_ProductImage_Pink_ChargingCaseOpen.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="box">
-                                            <img src="public/frontend/images/JBL_JR 310BT_Product Image_Hero_Skyblue.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="box">
-                                            <img src="public/frontend/images/JBLHorizon_001_dvHAMaster.png" alt="">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- end mega menu -->
-                        <li><a href="#">blog</a></li>
-                        <li><a href="#">contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end bottom header -->
+            
         </div>
         <!-- end main header -->
     </header>
     <!-- end header -->
 
-    <!-- hero section -->
-    <div class="hero">
-        <div class="slider">
-            <div class="container">
-                <!-- slide item -->
-                <div class="slide active">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL TUNE 750TNC
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Next-gen design
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolor commodi dignissimos culpa, eaque eos necessitatibus possimus veniam, cupiditate rerum deleniti? Libero, ducimus error? Beatae velit dolore sint explicabo! Fugit.
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img top-down">
-                        <img src="public/frontend/images/JBL_E55BT_KEY_RED_6063_FS_x1-1605x1605px.webp" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
-                <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL Quantum ONE
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Ipsum dolor
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. A optio, voluptatum aperiam nobis quis maxime corporis porro alias soluta sunt quae consectetur aliquid blanditiis perspiciatis labore cumque, ullam, quam eligendi!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img right-left">
-                        <img src="public/frontend/images/JBL_E55BT_KEY_BLACK_6175_FS_x1-1605x1605px.png" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
-                <!-- slide item -->
-                <div class="slide">
-                    <div class="info">
-                        <div class="info-content">
-                            <h3 class="top-down">
-                                JBL JR 310BT
-                            </h3>
-                            <h2 class="top-down trans-delay-0-2">
-                                Consectetur Elit
-                            </h2>
-                            <p class="top-down trans-delay-0-4">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo aut fugiat, libero magnam nemo inventore in tempora beatae officiis temporibus odit deserunt molestiae amet quam, asperiores, iure recusandae nulla labore!
-                            </p>
-                            <div class="top-down trans-delay-0-6">
-                                <button class="btn-flat btn-hover">
-                                    <span>shop now</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="img left-right">
-                        <img src="public/frontend/images/JBL_JR 310BT_Product Image_Hero_Skyblue.png" alt="">
-                    </div>
-                </div>
-                <!-- end slide item -->
-            </div>
-            <!-- slider controller -->
-            <button class="slide-controll slide-next">
-                <i class='bx bxs-chevron-right'></i>
-            </button>
-            <button class="slide-controll slide-prev">
-                <i class='bx bxs-chevron-left'></i>
-            </button>
-            <!-- end slider controller -->
-        </div>
-    </div>
-    <!-- end hero section -->
-
+    
     <!-- promotion section -->
     <div class="promotion">
         @yield('content')
@@ -275,64 +105,19 @@
     <!-- end blogs -->
 
     <!-- footer -->
-    <footer class="bg-second">
+    <footer class="bg-second"  style="text-align: center;">
         <div class="container">
             <div class="row">
-                <div class="col-3 col-md-6">
-                    <h3 class="footer-head">Products</h3>
-                    <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
-                    </ul>
+                <div class="col-11 ">
+                    <p class="" >
+                    Trường Đại học Cần Thơ (Can Tho University)
+                    Khu II, đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ. <br>                                   
+                    Điện thoại: (84-292) 3832663 - (84-292) 3838474; Fax: (84-292) 3838474; <br> 
+                    Email: dhct@ctu.edu.vn.
+                    </p>
+                   
                 </div>
-                <div class="col-3 col-md-6">
-                    <h3 class="footer-head">services</h3>
-                    <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
-                    </ul>
-                </div>
-                <div class="col-3 col-md-6">
-                    <h3 class="footer-head">support</h3>
-                    <ul class="menu">
-                        <li><a href="#">Help center</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">product help</a></li>
-                        <li><a href="#">warranty</a></li>
-                        <li><a href="#">order status</a></li>
-                    </ul>
-                </div>
-                <div class="col-3 col-md-6 col-sm-12">
-                    <div class="contact">
-                        <h3 class="contact-header">
-                            ATShop
-                        </h3>
-                        <ul class="contact-socials">
-                            <li><a href="#">
-                                    <i class='bx bxl-facebook-circle'></i>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class='bx bxl-instagram-alt'></i>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class='bx bxl-youtube'></i>
-                                </a></li>
-                            <li><a href="#">
-                                    <i class='bx bxl-twitter'></i>
-                                </a></li>
-                        </ul>
-                    </div>
-                    <div class="subscribe">
-                        <input type="email" placeholder="ENTER YOUR EMAIL">
-                        <button>subscribe</button>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </footer>
@@ -341,6 +126,105 @@
     <!-- app js -->
     <script src={{asset('./js/app.js')}}></script>
     <script src={{asset('./js/index.js')}}></script>
+   <!-- js placed at the end of the document so the pages load faster -->
+   <script src="{{asset('/public/backend/lib/jquery/jquery.min.js')}}"></script>
+
+<script src="{{asset('public/backend/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+
+
+
+   <!-- Thêm học phần -->
+    <script type="text/javascript">   
+            $('.dangkyphong').click(function(){
+                var room_id = $(this).data('id_room');
+                var detail_semester_id = $(this).data('detail_semester_id');
+                var id_thu = $(this).data('id_thu');
+                var id_buoi = $(this).data('id_buoi');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                url:"{{url('/dang-ky-phong')}}",
+                method:"POST",
+                dataType:"JSON",
+                data:{room_id:room_id, _token:_token,detail_semester_id:detail_semester_id,id_thu:id_thu,id_buoi:id_buoi},
+                    success:function(data){
+                    $('#room_name').val(data.room_name);
+                    $('#room_id').val(data.room_id);
+                    $('#week').val(data.week);
+                    $('#detail_semester_id').val(data.detail_semester_id);
+                    $('#thu').val(data.thu);
+                    $('#id_thu').val(data.id_thu);
+                    $('#buoi').val(data.buoi);
+                    $('#id_buoi').val(data.id_buoi);
+                    }
+                });
+            });
+    </script>
+ 
+    <!-- Thêm học phần -->
+    <script type="text/javascript">   
+                $('.tkb').click(function(){
+                    var room_id = $(this).data('id_room');
+                    var detail_semester_id = $(this).data('detail_semester_id');
+                    var id_thu = $(this).data('id_thu');
+                    var id_buoi = $(this).data('id_buoi');
+                    var _token = $('input[name="_token"]').val();
+                    $.ajax({
+                    url:"{{url('/load-tkb')}}",
+                    method:"POST",
+                    dataType:"JSON",
+                    data:{room_id:room_id, _token:_token,detail_semester_id:detail_semester_id,id_thu:id_thu,id_buoi:id_buoi},
+                        success:function(data){
+                        $('#room_name').val(data.room_name);
+                        $('#room_id').val(data.room_id);
+                        $('#week').val(data.week);
+                        $('#detail_semester_id').val(data.detail_semester_id);
+                        $('#thu').val(data.thu);
+                        $('#id_thu').val(data.id_thu);
+                        $('#id_buoi').val(data.id_buoi);
+                        }
+                    });
+                });
+        </script>
+
+<!-- chọn hp va nhóm hp -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='subject_name'){
+               
+                result = 'nhom';
+               
+            }else{
+                
+                result = 'nhomhp_id';
+                
+            }
+            $.ajax({
+                url : '{{url('/select-hocphan')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
+
+
+
+
+
+
+
 </body>
 
 </html>

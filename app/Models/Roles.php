@@ -15,6 +15,6 @@ class Roles extends Model
     protected $primaryKey = 'id_roles';
  	protected $table = 'tbl_roles';
 
- 	
+ 
  	
 }

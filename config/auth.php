@@ -71,9 +71,9 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        // 'customusers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Users::class,
         // ],
     ],
 
@@ -99,6 +99,12 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        // 'customusers' => [
+        //     'provider' => 'users',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*

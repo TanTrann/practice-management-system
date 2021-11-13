@@ -7,8 +7,8 @@
     <div class="col-sm-12">
             <div class="showback">
             @foreach ($room_detail as $key => $value) 
-              <h3><i class="fa fa-angle-right"></i>{{$value->room_name}} </h3>
-              <h5> Tổng số máy : <strong style="color: red;">{{$count_pc}} </strong>|| Tổng số phần mềm: <strong style="color: red;">{{$count_software}}</strong> </h5>
+              <h3><i class="fa fa-home" style="padding-right: 10px;width: 29px;"></i>{{$value->room_name}} </h3>
+             
                             @endforeach
                 <span id="session"> 
                     <?php
@@ -26,45 +26,13 @@
           <div class="col-lg-6 col-md-6 col-sm-12">
             <!--  BASIC PROGRESS BARS -->
             <div class="showback">
-            <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#them-may" style="float: right;">Thêm máy</button>
-            <h3>Thông tin máy</h3>        
-                <div class="card-header-left">
-                    Tất cả máy
-                </div>
-            <table class="table table-hover"  id="mytable2" >
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Tên máy</th>
-                                            <th>Quản lí</th>
-                                            
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach($pc_list as $key => $pc)
-                                        <tr>
-                                            <th scope="row">{{$pc->computer_id}}</th>
-                                            <td>{{$pc->computer_name}}</td>
-                                          
-                                           
-                                            <td>
-
-                                            <button class="btn-sm btn-primary btn-outline-primary edit-pc" data-toggle="modal" data-target="#edit-pc" data-id_computer="{{$pc->computer_id}}">
-                                                            <i class="fa fa-pencil"></i>
-                                                        </button>    
-                                            <a href="{{URL::to('/delete-pc/'.$pc->computer_id)}}"   onclick="return confirm('Bạn có chắc là muốn xóa máy này?')"  >
-                                                <button class="btn-sm btn-danger btn-outline-danger">
-                                                            <i class="fa fa-trash"></i>
-                                                </button>
-                                            </a>
-                                            </td>
-                                            @endforeach
-                                        </tr>
-                                        
-                                        
-                                    </tbody>
-                                </table>
+            
+            <h3>Thông tin phòng</h3>  
+          <hr>
+            <div class="showback">
+            <strong> <h4> Tổng số máy : <strong style="color: red;">{{$value->pc_quantity}} </strong> máy</h4> </strong>
+            <strong> <h4> Tổng số phần mềm: <strong style="color: red;">{{$count_software}}</strong> phần mềm </h4> </strong>
+            </div>
             </div>
             <!--/showback -->
           
@@ -146,14 +114,14 @@
                             
                             <label class="col-sm-3 col-form-label">Tên phần mềm:</label>
                             <div class="col-sm-10">
-                                        <select name="software_name" id="software_name" class="form-control choose software_name">
-                                        
-                                            <option> --Chọn phần mềm--</option>
-                                            @foreach ($all_software as $key => $soft)
-                                            <option value="{{$soft->software_id}}"><p name="software_name">{{$soft->software_name}}</p> </option>
-                                            @endforeach
-                                            
-                                    </select>
+                                <select name="software_name" id="software_name" class="form-control choose software_name">
+                                
+                                    <option> --Chọn phần mềm--</option>
+                                    @foreach ($all_software as $key => $soft)
+                                    <option value="{{$soft->software_id}}"><p name="software_name">{{$soft->software_name}}</p> </option>
+                                    @endforeach
+                                    
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
