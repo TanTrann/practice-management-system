@@ -32,6 +32,11 @@
             <div class="showback">
             <strong> <h4> Tổng số máy : <strong style="color: red;">{{$value->pc_quantity}} </strong> máy</h4> </strong>
             <strong> <h4> Tổng số phần mềm: <strong style="color: red;">{{$count_software}}</strong> phần mềm </h4> </strong>
+            <br>
+            <h3>Cấu hình:</h3>
+            <h4><strong>  CPU: </strong><spans style="color: green;">{{$value->cpu}} </span><br></h4>
+            <h4><strong>  RAM: </strong><spans style="color: green;">{{$value->ram}}</spans></h4>
+            <h4><strong> Ghi chú: </strong><spans style="color: green;"><p>{{$value->ghichu}}</p></spans></h4>
             </div>
             </div>
             <!--/showback -->
@@ -45,10 +50,8 @@
             <!--  ALERTS EXAMPLES -->
             <div class="showback">
                 <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software-room" style="float: right;">Thêm phần mềm</button> 
-                    <h3> Thông tin phần mềm</h3>
-                        <div class="card-header-left ">
-                            Tất cả phần mềm
-                        </div>
+                    <h3> Danh sách phần mềm</h3>
+                        
                             <table class="table table-hover"  id="mytable" >
                                 <thead>
                                     <tr>
@@ -65,7 +68,7 @@
                                         
                                         <td>{{$sdetails->software_name}}</td>
                                         
-                                        <td>{{number_format((float)$sdetails->version_number, 1, '.', '')}}</td>
+                                        <td>{{$sdetails->software_version}}</td>
                                         <td>
                                         <a href="{{URL::to('/delete-soft-room/'.$sdetails->room_details_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phần mềm này?')"  >
                                             <button class="btn-sm btn-danger btn-outline-danger">
@@ -95,7 +98,7 @@
             
             <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Thêm máy </h4>
+                      <h4 class="modal-title" id="myModalLabel">Thêm phần mềm </h4>
             </div>
           
             
@@ -114,37 +117,18 @@
                             
                             <label class="col-sm-3 col-form-label">Tên phần mềm:</label>
                             <div class="col-sm-10">
-                                <select name="software_name" id="software_name" class="form-control choose software_name">
+                                <select name="software_id" id="software_name" class="form-control">
                                 
-                                    <option> --Chọn phần mềm--</option>
+                                   
                                     @foreach ($all_software as $key => $soft)
-                                    <option value="{{$soft->software_id}}"><p name="software_name">{{$soft->software_name}}</p> </option>
+                                    <option value="{{$soft->software_id}}">{{$soft->software_name}} </option>
                                     @endforeach
                                     
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            
-                            <label class="col-sm-3 col-form-label">Phiên bản:</label>
-                            <div class="col-sm-10">
-                                        <select name="version_number" id="version_number" class="form-control choose version_number  ">
-                                            
-                                        <option> --Chọn phiên bản--</option>
-                                           
-                                            
-                                    </select>
-                            </div>
-                        </div>
-                        <div class="form-group row"  hidden >                           
-                            <label class="col-sm-3 col-form-label">id version:</label>
-                            <div class="col-sm-10">
-                                        <select name="version_id" id="version_id" class="form-control version_id choose ">
-                                           
-                                            
-                                    </select>
-                            </div>
-                        </div>
+                       
+                       
                         
                     
                 </div>        

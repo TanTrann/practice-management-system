@@ -9,7 +9,7 @@
             <div class="card-header">
             <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm học phần</button> 
             <div class="card-header">
-                <h3>Danh sách học phần</h3>
+                <h3>Quản lý học phần</h3>
                     <?php
                                 $message = Session::get('message');
                                 if ($message){
@@ -18,7 +18,7 @@
                                     }
                             ?>
                 </div>
-       
+       <p>Danh sách học phần</p>
                 
                             <!-- Hover table card start -->
                          
@@ -40,8 +40,9 @@
                                                         @foreach($all_subject as $key => $val)
                                                            
                                                             <td>{{$val->subject_id}}</td>
-                                                            <td>{{$val->subject_name}}</td>
                                                             <td>{{$val->mahocphan}}</td>
+                                                            <td>{{$val->subject_name}}</td>
+                                                       
                                                             <td>
                                                                 <a href="{{URL::to('/qli-phan-cong/'.$val->subject_id)}}"><button class="btn" data-toggle="modal" ><i class="fa fa-info-circle" ></i></button></a>
                                                                 <button class="btn show-edit-subject" data-toggle="modal" data-target="#suahp"    data-id_subject="{{$val->subject_id}}" ><i class="fa fa-pencil " style="color: green;" ></i></button>

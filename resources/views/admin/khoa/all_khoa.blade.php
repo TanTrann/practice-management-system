@@ -7,9 +7,9 @@
             <!--  BASIC PROGRESS BARS -->
             <div class="showback">
             <div class="card-header">
-            <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm Giảng Viên</button> 
+            <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm khoa</button> 
             <div class="card-header">
-                <h3>Quản lý user</h3>
+                <h3>>Quản lý đơn vị</h3>
                     <?php
                                 $message = Session::get('message');
                                 if ($message){
@@ -18,59 +18,35 @@
                                     }
                             ?>
                 </div>
-       
+       <p>Danh sách đơn vị</p>
                 
                             <!-- Hover table card start -->
                          
                                 <div class="card-block table-border-style">
                                     <div class="table-responsive">
                                             <div class="card-block">
-                                            <table class="table table-striped b-t b-light" id="myTable">
+                                            <table class="table table-striped b-t b-light" id="mytable">
                                                 <thead>
                                                 <tr>
                                                     <th>ID</th>
-                                                    <th>Mã CB</th>
-                                                    <th>Tên CB</th>
-                                                    <th>Email</th>
-                                                    <th>SDT</th>
-                                                    <th>Địa chỉ</th>
-                                                    <th>Chức vụ</th>
+                                                    <th>Mã đơn vị</th>
+                                                    <th>Tên đơn vị</th>
                                                     <th >Quản lý</th>
-                                                  
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                @foreach($all_user as $key => $value)
+                                                @foreach($all_khoa as $key => $value)
                                                     
                                                     @csrf
                                                     <tr>
-                                                        <td>{{ $value->user_id}}</td>
-                                                        <td>{{ $value->id_user}}</td>
-                                                        <td>{{ $value->user_name }}</td>
-                                                        <td>{{ $value->user_email }} </td>
-                                                        <td>{{ $value->user_phone }}</td>
-                                                        <td>{{ $value->user_address }}</td>
-                                                       <?php 
-                                                       if ( $value->id_chucvu == 0){
-                                                        ?>
-                                                            <td class="btn-danger btn-outline-danger ">{{ $value->ten_chucvu}}</td>
-                                                       
-                                                        <?php
-                                                        }else{
-                                                        ?>
-                                                        
-                                                            <td class="btn-primary btn-outline-primary">{{ $value->ten_chucvu}}</td>
-                                                        
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                       
-                                                       
+                                                        <td>{{ $value->khoa_id}}</td>
+                                                        <td>{{ $value->ma_khoa}}</td>
+                                                        <td>{{ $value->ten_khoa }}</td>
                                                         <td>
-                                                        <button class="btn-sm btn-primary btn-outline-primary showedituser" data-toggle="modal" data-target="#showedituser" data-id_user="{{$value->user_id}}">
+                                                        <button class="btn-sm btn-primary btn-outline-primary showeditkhoa" data-toggle="modal" data-target="#showeditkhoa" data-id_khoa="{{$value->khoa_id}}">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
-                                                            <a href="{{URL::to('/delete-user/'.$value->user_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này?')"  >
+                                                            <a href="{{URL::to('/delete-khoa/'.$value->khoa_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa khoa này?')"  >
                                                                 <button class="btn-sm btn-danger btn-outline-danger">
                                                                             <i class="fa fa-trash"></i>
                                                                 </button>
@@ -108,7 +84,7 @@
         <div class="modal-content">
         <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Thêm giảng viên</h4>
+                      <h4 class="modal-title" id="myModalLabel">Thêm đơn vị</h4>
             </div>
             <div class="modal-body">
             
@@ -117,58 +93,24 @@
                     
                 
                     <!-- form nhập tkb -->
-                    <form action="{{URL::to('insert-user')}}" method="post">
+                    <form action="{{URL::to('insert-khoa')}}" method="post">
                         @csrf
                        
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Họ tên:</label>
+                            <label class="col-sm-4 col-form-label">Mã đơn vị:</label>
                             <div class="col-sm-7">
-                                <input type="text" name="user_name" class="form-control"
-                                placeholder="Nhập họ tên">
+                                <input type="text" name="ma_khoa" class="form-control"
+                                placeholder="Nhập mã đơn vị">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Email:</label>
+                            <label class="col-sm-4 col-form-label">Tên đơn vị:</label>
                             <div class="col-sm-7">
-                                <input type="text" name="user_email" class="form-control"
-                                placeholder="Nhập họ tên">
+                                <input type="text" name="ten_khoa" class="form-control"
+                                placeholder="Nhập tên đơn vị">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Mã cán bộ:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="id_user" class="form-control"
-                                placeholder="Nhập mã cán bộ">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Password:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="user_password" class="form-control"
-                                placeholder="Nhập password">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">SĐT:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="user_phone" class="form-control"
-                                placeholder="Nhập số điện thoại">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Địa chỉ:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="user_address" class="form-control"
-                                placeholder="Nhập địa chỉ">
-                            </div>
-                        </div>
-                        <div class="form-group row" hidden>
-                            <label class="col-sm-4 col-form-label">Chuc vu:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="id_chucvu" class="form-control"
-                                value="1">
-                            </div>
-                        </div>
+                       
                       
                
                        
@@ -179,7 +121,7 @@
             
         </div>
                 <div class="modal-footer">
-                <button type="submit" class="btn btn-primary insert-user" >Thêm</button>
+                <button type="submit" class="btn btn-primary insert-khoa" >Thêm</button>
                 <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>
                 </div>
                 </form>
@@ -190,12 +132,12 @@
    
        <!-- Modal update software-->
       
-    <div class="modal fade" id="showedituser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="showeditkhoa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
         <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Cập nhật thông tin giảng viên</h4>
+                      <h4 class="modal-title" id="myModalLabel">Cập nhật thông tin đơn vị</h4>
             </div>
             <div class="modal-body">
             
@@ -204,46 +146,24 @@
                     
                 
                     <!-- form nhập tkb -->
-                    <form action="{{URL('/update-user')}}" method="post">
+                    <form action="{{URL('/update-khoa')}}" method="post">
                         @csrf
-                                <input type="hidden" id="user_id" name="user_id">
+                                <input type="hidden" id="khoa_id" name="khoa_id">
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Họ tên:</label>
+                            <label class="col-sm-4 col-form-label">Mã đơn vị:</label>
                             <div class="col-sm-7">
-                                <input type="text" name="user_name" id="user_name" class="form-control"
+                                <input type="text" name="ma_khoa" id="ma_khoa" class="form-control"
                               >
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Email:</label>
+                            <label class="col-sm-4 col-form-label">Tên đơn vị:</label>
                             <div class="col-sm-7">
-                                <input type="text" name="user_email" id="user_email" class="form-control"
+                                <input type="text" name="ten_khoa" id="ten_khoa" class="form-control"
                               >
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Mã cán bộ:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="id_user" id="id_user" class="form-control"
-                                >
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">SĐT:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="user_phone" id="user_phone" class="form-control"
-                                >
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Địa chỉ:</label>
-                            <div class="col-sm-7">
-                                <input type="text" name="user_address" id="user_address" class="form-control"
-                                >
-                            </div>
-                        </div>
-                        
+                       
                
                        
                        

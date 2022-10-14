@@ -146,7 +146,7 @@
                 </div>        
             
             
-        </div>
+            </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" name="">Thêm</button>
                 <button type="button" class="btn btn-inverse" data-dismiss="modal">Đóng</button>

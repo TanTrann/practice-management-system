@@ -15,6 +15,7 @@
     <link href="{{asset('public/backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('public/frontend/css/grid.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/app.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css')}}">
 
      <!-- Bootstrap core CSS -->
   <link href="{{asset('public/frontend/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -80,11 +81,12 @@
                         }
                     ?>
                     </p>
-                   
-                        <a class="logout-user" href="{{URL::to('/logout-user')}}" >
-                        <i class="ti-layout-sidebar-left" ></i> Đăng xuất
-                        
+                        <button class="btn-xs btn btn-round btn-info">
+                        <a class="  logout-user" href="{{URL::to('/logout-user')}}" style="text-decoration: none;padding: 3px;">
+                        Đăng xuất
+                       <i class="fa fa-power-off" style="color: red;" ></i>
                         </a>
+                        </button>
                     </div>
                     
                 </div>
@@ -108,7 +110,7 @@
     <footer class="bg-second"  style="text-align: center;">
         <div class="container">
             <div class="row">
-                <div class="col-11 ">
+                <div class="col-12">
                     <p class="" >
                     Trường Đại học Cần Thơ (Can Tho University)
                     Khu II, đường 3/2, P. Xuân Khánh, Q. Ninh Kiều, TP. Cần Thơ. <br>                                   
@@ -124,6 +126,8 @@
     <!-- end footer -->
 
     <!-- app js -->
+  
+<script type="text/javascript" charset="utf8" src="{{asset('https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js')}}"></script>
     <script src={{asset('./js/app.js')}}></script>
     <script src={{asset('./js/index.js')}}></script>
    <!-- js placed at the end of the document so the pages load faster -->
@@ -155,11 +159,43 @@
                     $('#id_thu').val(data.id_thu);
                     $('#buoi').val(data.buoi);
                     $('#id_buoi').val(data.id_buoi);
+                    $('#detail_semester_id22').val(data.detail_semester_id);
                     }
                 });
             });
     </script>
- 
+ <!-- add soft room -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='software_name'){
+               
+                result = 'version_number';
+               
+            }else{
+                
+                result = 'version_id';
+                
+            }
+            $.ajax({
+                url : '{{url('/select-software')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
     <!-- Thêm học phần -->
     <script type="text/javascript">   
                 $('.tkb').click(function(){
@@ -181,6 +217,7 @@
                         $('#thu').val(data.thu);
                         $('#id_thu').val(data.id_thu);
                         $('#id_buoi').val(data.id_buoi);
+                        $('#detail_semester_id2').val(data.detail_semester_id);
                         }
                     });
                 });
@@ -199,7 +236,7 @@
             if(action=='subject_name'){
                
                 result = 'nhom';
-               
+                
             }else{
                 
                 result = 'nhomhp_id';
@@ -217,6 +254,133 @@
         });
           
     </script>
+
+
+<!-- chọn hp va nhóm hp 2 -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose2').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='subject_name2'){
+               
+                result = 'nhom2';
+                
+            }else{
+                
+                result = 'nhomhp_id2';
+                
+            }
+            $.ajax({
+                url : '{{url('/select-hocphan2')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
+
+
+<!-- chọn hp va nhóm hp 2 -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choosehp').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action =='mahp_lophp'){
+               
+                result = 'namhoc_lophp';
+              
+               
+                
+            }else{
+             
+                result = 'hocky_lophp';
+            }
+            $.ajax({
+                url : '{{url('/select-lophp')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
+<!-- Sửa lophp -->
+<script type="text/javascript">   
+$('.show-edit-lophp').click(function(){
+    var sttlophp = $(this).data('sttlophp');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-lophp')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{sttlophp:sttlophp, _token:_token},
+        success:function(data){
+        $('#sttlophp').val(data.sttlophp);
+        $('#hocky_lophp').val(data.hocky_lophp);
+        $('#namhoc_lophp').val(data.namhoc_lophp);
+        $('#mahp_lophp').val(data.mahp_lophp);
+        $('#tietbd_lophp').val(data.tietbd_lophp);
+        $('#sotiet_lophp').val(data.sotiet_lophp);
+        $('#thu_lophp').val(data.thu_lophp);
+        $('#macb_lophp').val(data.macb_lophp);
+      
+       
+
+        $('#sttlophp2').val(data.sttlophp);
+        $('#hocky_lophp2').val(data.hocky_lophp);
+        $('#namhoc_lophp2').val(data.namhoc_lophp);
+        $('#mahp_lophp2').val(data.mahp_lophp);
+        $('#tietbd_lophp2').val(data.tietbd_lophp);
+        $('#sotiet_lophp2').val(data.sotiet_lophp);
+        $('#thu_lophp2').val(data.thu_lophp);
+        $('#macb_lophp2').val(data.macb_lophp);
+        
+        $('#sttlophp3').val(data.sttlophp);
+        $('#hocky_lophp3').val(data.hocky_lophp);
+        $('#namhoc_lophp3').val(data.namhoc_lophp);
+        $('#mahp_lophp3').val(data.mahp_lophp);
+        $('#tietbd_lophp3').val(data.tietbd_lophp);
+        $('#sotiet_lophp3').val(data.sotiet_lophp);
+        $('#thu_lophp3').val(data.thu_lophp);
+        $('#macb_lophp3').val(data.macb_lophp);
+
+       
+
+
+        }
+    });
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#mytable2').DataTable();
+} );
+
+</script>
+
+
 
 
 

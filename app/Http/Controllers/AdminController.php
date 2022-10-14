@@ -24,7 +24,7 @@ class AdminController extends Controller
  public function AuthLogin(){
     $user_id = Session::get('user_id');
     $id_chucvu = Session::get('id_chucvu');
-    if($user_id && $id_chucvu == 0){
+    if($user_id && $id_chucvu <> 1){
         return Redirect('dashboard');
     }else{
         return Redirect('admin')->send();
@@ -47,15 +47,15 @@ public function AuthLoginUser(){
     	 $this->AuthLogin();
          $count_room=Room::get()->count();
          $count_software=Software::get()->count();
-         $count_pc=Room::get()->sum('pc_quantity');
-    	return view ('admin.dashboard')->with('count_room',$count_room)->with('count_software',$count_software)->with('count_pc',$count_pc);
+       
+    	return view ('admin.dashboard')->with('count_room',$count_room)->with('count_software',$count_software);
     }
     
     public function dashboard(Request $request){
         $id_user = $request->id_user;
         $user_password = md5($request->user_password);
 
-        $result = DB::table('tbl_user')->where('id_user',$id_user)->where('user_password',$user_password)->where('id_chucvu',0)->first();
+        $result = DB::table('tbl_user')->where('id_user',$id_user)->where('user_password',$user_password)->first();
 
        
         if ($result){

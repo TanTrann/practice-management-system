@@ -9,7 +9,7 @@ class Room extends Model
 {
     public $timestamps = false; //set time to false
     protected $fillable = [
-    	 'room_name','room_quantity'
+    	 'room_name','pc_quantity','cpu','ram','ghichu'
     ];
     protected $primaryKey = 'room_id';
  	protected $table = 'tbl_room';

@@ -23,17 +23,7 @@
               <!-- TWITTER PANEL -->
               
               <!-- /col-md-4 -->
-              <div class="col-md-4 mb">
-                <!-- WHITE PANEL - TOP USER -->
-                <div class="white-panel pn">
-                  <div class="white-header">
-                    <h5>Tổng số máy</h5>
-                  </div>
-                  <p><i class="fa fa-desktop" style="font-size: 100px;"></i></p>
-                  <p style="font-size: 20px;color:red;font-weight: bold;">{{($count_pc)}} Máy</p>
-                
-                </div>
-              </div>
+              
               <div class="col-md-4 mb">
                 <!-- WHITE PANEL - TOP USER -->
                 <div class="white-panel pn">
@@ -65,12 +55,12 @@
            
               *********************************************************************************************************************************************************** -->
          
-              <div class="col-lg-3 ds">
+              <!-- <div class="col-lg-3 ds"> -->
             
             
 
             <!-- CALENDAR-->
-            <div id="calendar" class="mb">
+            <!-- <div id="calendar" class="mb">
               <div class="panel green-panel no-margin">
                 <div class="panel-body">
                   <div id="date-popover" class="popover top" style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
@@ -81,9 +71,9 @@
                   <div id="my-calendar"></div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- / calendar -->
-          </div>
+          <!-- </div> -->
           <!-- /col-lg-3 -->
         </div>
         <!-- /row -->

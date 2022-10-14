@@ -4,23 +4,23 @@
 <section class="">
     <div class="row">
         <div class="col-sm-12">
-            <div class="showback"> 
+            <div class="showback" style="background-color: white;"> 
                <table>
             <h3><strong>Lịch Thực Hành</strong></h3> 
              @foreach ($all_schedule as $key => $value)
+             <tr>
+                <td>Năm học: </td>
+                <td style="color:green;font-size: 14px;">{{$value->namhoc}}</td>
+            </tr>
             <tr>
-                <td>Học kì</td>
+                <td>Học kì: </td>
                 <td style="color:green;font-size: 14px;">{{$value->hoc_ki}}</td>
             </tr>
             <tr>
-                <td>Ngày bắt đầu:</td>
-                <td style="color:green;font-size: 14px;">{{date('d-m-Y', strtotime($value->date_start))}}</td>
-                
+                <td>Tổng số tuần: </td>
+                <td style="color:green;font-size: 14px;">{{$value->week_quantity}} tuần</td>
             </tr>
-            <tr>
-                <td> Ngày kết thúc:</td>
-                <td style="color:green;font-size: 14px;">{{date('d-m-Y', strtotime($value->date_end))}}</td>   
-            </tr>
+           
         </table>
         @endforeach
                 <?php
@@ -36,7 +36,7 @@
                
 
         <div class="col-sm-12">
-        <div class="showback">  
+        <div class="showback" style="background-color: white;"  >  
                <!-- Nav tabs -->
                <ul class="nav nav-tabs  tabs" role="tablist">
                         @foreach ($all_week as $key => $week)
@@ -49,35 +49,33 @@
                                         <div class="tab-content tabs card-block" style="background-color: white;">  
                                             @foreach ($all_week as $key => $week)
                                                 <div class= " tab-pane" id="{{$week->detail_semester_id}}" role="tabpanel">  
-                                                    <table class="table tab-pane"  id="{{$week->detail_semester_id}}" role="tabpanel" border="solid 1px" >
+                                                <table class="table tab-pane"  id="{{$week->detail_semester_id}}" role="tabpanel" style="text-align: center;" border="1px solid" >
                                                         
-                                                        <thead style="background-color: #4285f4;">
-                                                            <tr> 
+                                                        <thead style="background-color: #4285f4;" style="text-align: center;">
+                                                            <tr style="text-align: center;background-color: #4285f4;color: white;"> 
                                                                 <th rowspan="3">Buổi</th>
                                                                 <th>Phòng</th>
                                                                 @foreach( $all_thu as $key => $thu)
-                                                                <th name="thu">{{($thu -> thu)}}</th>
+                                                                <th name="thu" style="text-align: center;" >{{($thu -> thu)}}</th>
                                                                 @endforeach
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody style="text-align: center;">
                                                             @foreach( $all_buoi as $key => $buoi)
                                                                 <tr>
                                                                     <th rowspan="{{$count_room +1}}" name="buoi">{{($buoi-> buoi)}}</th> 
                                                                 </tr>
                                                                 @foreach ($all_room as $key=> $room)
                                                                     <tr>
-                                                                        <td name="phong">
+                                                                        <td name="phong" >
                                                                             {{($room->room_name)}}
                                                                         </td> 
                                                                         @foreach( $all_thu as $key => $thu) 
                                                                           
-                                                                        <th>
-                                                                                
-                                                                                
+                                                                        <th style="text-align: center;">
                                                                                 
                                                                                 @foreach( $all_dki_phong as $key => $dki) 
-                                                                                
+                                                                                        
                                                                                         <!-- Dieu kien 1 --> 
                                                                                         <?php if($week->detail_semester_id == $dki->detail_semester_id ){ ?>
                                                                                                 <!-- Dieu kien 2 -->
@@ -86,15 +84,11 @@
                                                                                                     <?php if( $buoi->id_buoi == $dki->id_buoi){ ?>
                                                                                                         <!-- Dieu kien 4 -->
                                                                                                         <?php if( $thu->id_thu == $dki->id_thu){ ?>
-                                                                                                            <div class="thongtindki">
-                                                                                                                    Mã HP: {{($dki -> mahocphan)}} <br>
-                                                                                                                    Nhóm: {{($dki -> nhom)}} <br>
-                                                                                                                    GV: {{($dki -> user_name)}} <br>
-                                                                                                                    
-                                                                                                                  
-                                                                                                                   <button class="btn"  data-toggle="modal" data-target="#xoahp"><i class="fa fa-pencil" style="color: green;"></i></button></a>
-                                                                                                                
-                                                                                                                    <a href="{{URL::to('/delete-nhomhp/'.$dki->dki_phong_id)}}" onclick="return confirm('Bạn có chắc là muốn xóa học phần đã đăng ký?')"><button class="btn"><i class="fa fa-trash-o " style="color: red;"></i></button></a>
+                                                                                                            <div class="thongtindki" style="text-align: center;">
+                                                                                                                    {{($dki -> mahp)}} - {{($dki -> tenhp)}} <br>
+                                                                                                                    Nhóm: {{($dki -> nhom_id)}} <br>    
+                                                                                                                    Cán bộ: {{$dki ->user_name}}  <br>  
+                                                                                                                Thời gian:{{$dki ->gio_bd}} - {{$dki ->gio_kt}}
                                                                                                             </div>
                                                                                                         <?php }else{ ?> 
                                                                                                               
@@ -109,11 +103,10 @@
                                                                                                 <?php } ?>
                                                                                                 <!-- End-Dieu kien 2 -->
                                                                                         <?php }else{ ?>  
-
+        
                                                                                         <?php } ?>
                                                                                         <!-- End-Dieu kien 1 -->
                                                                                     @endforeach     
-                                                                           
                                                                            
                                                                         </th>
                                                                        
@@ -122,7 +115,7 @@
                                                                 @endforeach 
                                                             @endforeach
                                                         </tbody>
-                                                    </table>     
+                                                    </table>  
                                                 </div>
                                             @endforeach 
                                         </div>

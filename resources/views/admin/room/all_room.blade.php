@@ -9,6 +9,7 @@
                     Session::put('message',null);
                     }
             ?>
+          
         <div class="row mt">
           <div class="col-lg-12">
             <!-- The file upload form used as target for the file upload widget -->
@@ -16,8 +17,9 @@
                   
             <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-room" style="float: right;">Thêm phòng</button> 
             </span>
-            <br>
+       
             <div class="content-panel">
+           
               <div class="panel-body">
               @foreach($all_room as $key => $room)
               <div class="col-md-3 col-sm-3 mb">
@@ -94,28 +96,34 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Tên phòng:</label>
                             <div class="col-sm-10">
-                                <input name="room_name" type="text" class="form-control"
-                                placeholder="Nhập tên phòng">
+                                <input name="room_name" type="text" class="form-control" placeholder="Nhập tên phòng">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Số lượng máy:</label>
                             <div class="col-sm-10">
-                                <input name="pc_quantity" type="text" class="form-control"
-                                placeholder="Nhập số lượng">
+                                <input name="pc_quantity" type="text" class="form-control" placeholder="Nhập số lượng">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-3 col-form-label">Cấu hình máy:</label>
+                            <label class="col-sm-3 col-form-label" >CPU:</label>
                             <div class="col-sm-10">
-                                <textarea name="cauhinh" rows="6" class="form-control"
-                                placeholder="Nhập cấu hình"></textarea>
+                              <input name="cpu" type="text" class="form-control" placeholder="Nhập tên CPU">
                             </div>
                         </div>
-                        
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" >RAM:</label>
+                            <div class="col-sm-10">
+                              <input name="ram" type="text" class="form-control" placeholder="Nhập RAM">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" >Ghi chú:</label>
+                            <div class="col-sm-10">
+                            <textarea name="ghichu" class="form-control"  rows="7"></textarea>
+                            </div>
+                        </div>
                 </div>        
-            
-            
         </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary" name="add-room">Thêm</button>
@@ -132,14 +140,13 @@
         <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title data_service_quickview_title" id="">
-                                <Strong>Cập nhật phòng    </Strong>           
-                <span id="data_service_quickview_title"></span>
-                
-            </h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
+            <h4 class="modal-title" id="myModalLabel">Cập nhật phòng</h4>
+                               
+       
+            
             </div>
             <div class="modal-body">
             
@@ -149,21 +156,43 @@
                 
                     <form action="{{URL('/update-room')}}" method="post">
                         @csrf
-                        <div class="form-group row">
                         <input type="hidden" name="room_id" id="room_quickview_id" >
-                        <span id="room_quickview_id"></span>
+                        
+                        <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Tên phòng:</label>
                             <div class="col-sm-10">
                                 <input name="room_name" type="text" class="form-control" id="room_quickview_title"
                                 placeholder="Nhập tên phòng">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Số lượng:</label>
+                            <div class="col-sm-10">
+                                <input name="pc_quantity" type="text" class="form-control" id="pc_quantity"
+                               >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">CPU:</label>
+                            <div class="col-sm-10">
+                            <input name="cpu" type="text" class="form-control" id="cpu">
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">RAM:</label>
+                            <div class="col-sm-10">
+                            <input name="ram" type="text" class="form-control" id="ram">
+                        </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Ghi chú:</label>
+                            <div class="col-sm-10">
+                            <textarea name="ghichu" class="form-control"  rows="7" id="ghichu"></textarea>
+                        </div>
+                        </div>
+
                         
-                       
-                    
-                </div>        
-            
-            
+                </div>           
         </div>
                 <div class="modal-footer">
                 <button type="submit" class="btn btn-primary editbtn" >Cập nhật</button>

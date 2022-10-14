@@ -48,198 +48,27 @@
       <!--logo start-->
       <a href="index.html" class="logo"><b>QLTH<span>CTU</span></b></a>
       <!--logo end-->
-      <div class="nav notify-row" id="top_menu">
-        <!--  notification start -->
-        <ul class="nav top-menu">
-          <!-- settings start -->
-          <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-              <i class="fa fa-tasks"></i>
-              <span class="badge bg-theme">4</span>
-              </a>
-            <ul class="dropdown-menu extended tasks-bar">
-              <div class="notify-arrow notify-arrow-green"></div>
-              <li>
-                <p class="green">You have 4 pending tasks</p>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <div class="task-info">
-                    <div class="desc">Dashio Admin Panel</div>
-                    <div class="percent">40%</div>
-                  </div>
-                  <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                      <span class="sr-only">40% Complete (success)</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <div class="task-info">
-                    <div class="desc">Database Update</div>
-                    <div class="percent">60%</div>
-                  </div>
-                  <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                      <span class="sr-only">60% Complete (warning)</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <div class="task-info">
-                    <div class="desc">Product Development</div>
-                    <div class="percent">80%</div>
-                  </div>
-                  <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                      <span class="sr-only">80% Complete</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <div class="task-info">
-                    <div class="desc">Payments Sent</div>
-                    <div class="percent">70%</div>
-                  </div>
-                  <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                      <span class="sr-only">70% Complete (Important)</span>
-                    </div>
-                  </div>
-                </a>
-              </li>
-              <li class="external">
-                <a href="#">See All Tasks</a>
-              </li>
-            </ul>
-          </li>
-          <!-- settings end -->
-          <!-- inbox dropdown start-->
-          <li id="header_inbox_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-              <i class="fa fa-envelope-o"></i>
-              <span class="badge bg-theme">5</span>
-              </a>
-            <ul class="dropdown-menu extended inbox">
-              <div class="notify-arrow notify-arrow-green"></div>
-              <li>
-                <p class="green">You have 5 new messages</p>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-zac.jpg"></span>
-                  <span class="subject">
-                  <span class="from">Zac Snider</span>
-                  <span class="time">Just now</span>
-                  </span>
-                  <span class="message">
-                  Hi mate, how is everything?
-                  </span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-divya.jpg"></span>
-                  <span class="subject">
-                  <span class="from">Divya Manian</span>
-                  <span class="time">40 mins.</span>
-                  </span>
-                  <span class="message">
-                  Hi, I need your help with this.
-                  </span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-danro.jpg"></span>
-                  <span class="subject">
-                  <span class="from">Dan Rogers</span>
-                  <span class="time">2 hrs.</span>
-                  </span>
-                  <span class="message">
-                  Love your new Dashboard.
-                  </span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="photo"><img alt="avatar" src="img/ui-sherman.jpg"></span>
-                  <span class="subject">
-                  <span class="from">Dj Sherman</span>
-                  <span class="time">4 hrs.</span>
-                  </span>
-                  <span class="message">
-                  Please, answer asap.
-                  </span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">See all messages</a>
-              </li>
-            </ul>
-          </li>
-          <!-- inbox dropdown end -->
-          <!-- notification dropdown start-->
-          <li id="header_notification_bar" class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-              <i class="fa fa-bell-o"></i>
-              <span class="badge bg-warning">7</span>
-              </a>
-            <ul class="dropdown-menu extended notification">
-              <div class="notify-arrow notify-arrow-yellow"></div>
-              <li>
-                <p class="yellow">You have 7 new notifications</p>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                  Server Overloaded.
-                  <span class="small italic">4 mins.</span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="label label-warning"><i class="fa fa-bell"></i></span>
-                  Memory #2 Not Responding.
-                  <span class="small italic">30 mins.</span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                  Disk Space Reached 85%.
-                  <span class="small italic">2 hrs.</span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">
-                  <span class="label label-success"><i class="fa fa-plus"></i></span>
-                  New User Registered.
-                  <span class="small italic">3 hrs.</span>
-                  </a>
-              </li>
-              <li>
-                <a href="index.html#">See all notifications</a>
-              </li>
-            </ul>
-          </li>
-          <!-- notification dropdown end -->
-        </ul>
-        <!--  notification end -->
-      </div>
+      
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
+            <li style="padding-top: 21px;padding-right: 14px">
+                <?php
+                      $name = Session::get('user_name');
+                      if ($name){
+                          echo $name;
+                      }
+                ?>
+            </li>
             <li>
+           
                   <a class="logout" href="{{URL::to('/logout')}}">
                       <i class="ti-layout-sidebar-left"></i> Đăng xuất
                   </a>
             </li>
+           
+        </ul>
+        <ul class="nav pull-right top-menu">
+          
         </ul>
       </div>
     </header>
@@ -252,39 +81,56 @@
       <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu" id="nav-accordion">
-          <p class="centered"><a href="profile.html"><img src="public/backend/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-          <h5 class="centered">
-            <?php
-                $name = Session::get('user_name');
-                if ($name){
-                    echo $name;
-                }
-            ?>
-          </h5>
+          
           <li class="mt">
             <a class="" href="{{URL('/dashboard')}}">
               <i class="fa fa-dashboard"></i>
               <span>Trang chủ</span>
               </a>
           </li>
-          <li>
+         
+          <!-- <li>
             <a href="{{URL('/manage-semester')}}">
               <i class="fa fa-archive"></i>
               <span>Quản lý học kì</span>
               </a>
+          </li> -->
+          <!-- <li>
+            <a href="{{URL('/manage-hocky')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý học kỳ</span>
+              </a>
+          </li> -->
+          <?php
+                      $id = Session::get('id_chucvu');
+                      if ($id == 0){ ?>
+                        
+                                                  
+          <li>
+            <a href="{{URL('/manage-namhoc')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý năm học</span>
+              </a>
           </li>
           <li>
-            <a href="{{URL('/list-schedule')}}">
+            <a href="{{URL('/manage-semester')}}">
               <i class="fa fa-calendar"></i>
-              <span>Quản lý thời khóa biểu</span>
+              <span>Quản lý học kỳ</span>
               </a>
           </li>
           <li>
-            <a href="{{URL('/manage-subject')}}">
-              <i class="fa fa-book"></i>
-              <span>Quản lý môn học</span>
+            <a href="{{URL('/manage-hocphan')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý học phần</span>
               </a>
           </li>
+          <li>
+            <a href="{{URL('/all-software')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Quản lý phần mềm</span>
+              </a>
+          </li>
+         
           <li>
             <a href="{{URL('/all-room')}}">
               <i class="fa fa-server"></i>
@@ -292,24 +138,65 @@
               </a>
           </li>
          
+          
+          
+      
           <li>
-            <a href="{{URL('/all-software')}}">
-              <i class="fa fa-desktop"></i>
-              <span>Quản lý phần mềm</span>
+            <a href="{{URL('/all-suco')}}">
+              <i class="fa fa-wrench"></i>
+              <span>Quản lý sự cố</span>
               </a>
           </li>
           <li>
             <a href="{{URL('/all-user')}}">
               <i class="fa fa-user"></i>
-              <span>Quản lý USER</span>
+              <span>Quản lý cán bộ</span>
               </a>
           </li>
           <li>
             <a href="{{URL('/all-khoa')}}">
               <i class="fa fa-user"></i>
-              <span>Quản lý khoa</span>
+              <span>Quản lý đơn vị</span>
               </a>
           </li>
+         
+          <?php }else{ ?>
+          
+          <li>
+            <a href="{{URL('/manage-lophp')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý lớp học phần</span>
+              </a>
+          </li>
+          <li>
+            <a href="{{URL('/manage-nhomth')}}">
+              <i class="fa fa-archive"></i>
+              <span>Quản lý sắp lịch thực hành</span>
+              </a>
+          </li>
+          <!-- <li>
+            <a href="{{URL('/all-tuan')}}">
+              <i class="fa fa-desktop"></i>
+              <span>Quản lý tuan</span>
+              </a>
+          </li> -->
+          <li>
+            <a href="{{URL('/list-schedule')}}">
+              <i class="fa fa-calendar"></i>
+              <span>Quản lý lịch thực hành</span>
+              </a>
+          </li>
+          <?php  }?>
+      <!-- ------------------------------------------------------------------------------ -->
+         
+          <!-- <li>
+            <a href="{{URL('/manage-subject')}}">
+              <i class="fa fa-book"></i>
+              <span>Quản lý học phần</span>
+              </a>
+          </li> -->
+         
+          
           
           <!-- <li class="sub-menu">
             <a href="javascript:;">
@@ -486,9 +373,19 @@ var nav = $('.fixed-button');
             CKEDITOR.replace('ckeditor5');
             CKEDITOR.replace('ckeditor6');      
         CKEDITOR.replace('ckeditor7'); 
+        CKEDITOR.replace('ckeditor8'); 
+        CKEDITOR.replace('ckeditor9'); 
             
-            
-        </script>
+  </script>
+
+
+
+
+
+
+
+
+
 <!-- Sửa room -->
 <script type="text/javascript">   
 $('.showeditroom').click(function(){
@@ -502,8 +399,10 @@ $('.showeditroom').click(function(){
         success:function(data){
         $('#room_quickview_title').val(data.room_name);
         $('#room_quickview_id').val(data.room_id);
-        $('#room_quickview_quantity').val(data.room_quantity);
-        
+        $('#pc_quantity').val(data.pc_quantity);
+        $('#cpu').val(data.cpu);
+        $('#ram').val(data.ram);
+        $('#ghichu').val(data.ghichu);
         }
     });
 });
@@ -527,6 +426,134 @@ $('.show-edit-subject').click(function(){
     });
 });
 </script>
+<!-- Sửa hocki -->
+<script type="text/javascript">   
+$('.show-edit-namhoc').click(function(){
+    var namhoc_id = $(this).data('namhoc_id');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-namhoc')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{namhoc_id:namhoc_id, _token:_token},
+        success:function(data){
+        $('#namhoc_id').val(data.namhoc_id);
+        $('#namhoc').val(data.namhoc);
+      
+
+        }
+    });
+});
+</script>
+<!-- Sửa lophp -->
+<script type="text/javascript">   
+$('.show-edit-lophp').click(function(){
+    var sttlophp = $(this).data('sttlophp');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-lophp')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{sttlophp:sttlophp, _token:_token},
+        success:function(data){
+        $('#sttlophp').val(data.sttlophp);
+        $('#hocky_lophp').val(data.hocky_lophp);
+        $('#namhoc_lophp').val(data.namhoc_lophp);
+        $('#mahp_lophp').val(data.mahp_lophp);
+        $('#tietbd_lophp').val(data.tietbd_lophp);
+        $('#sotiet_lophp').val(data.sotiet_lophp);
+        $('#thu_lophp').val(data.thu_lophp);
+        $('#macb_lophp').val(data.macb_lophp);
+        $('#status_lophp').val(data.status_lophp);
+
+        }
+    });
+});
+</script>
+
+
+
+
+   <!-- Thêm học phần -->
+    <script type="text/javascript">   
+            $('.dangkyphong').click(function(){
+                var room_id = $(this).data('id_room');
+                var detail_semester_id = $(this).data('detail_semester_id');
+                var id_thu = $(this).data('id_thu');
+                var id_buoi = $(this).data('id_buoi');
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                url:"{{url('/dang-ky-phong')}}",
+                method:"POST",
+                dataType:"JSON",
+                data:{room_id:room_id, _token:_token,detail_semester_id:detail_semester_id,id_thu:id_thu,id_buoi:id_buoi},
+                    success:function(data){
+                    $('#room_name').val(data.room_name);
+                    $('#room_id').val(data.room_id);
+                    $('#week').val(data.week);
+                    $('#detail_semester_id').val(data.detail_semester_id);
+                    $('#thu').val(data.thu);
+                    $('#id_thu').val(data.id_thu);
+                    $('#buoi').val(data.buoi);
+                    $('#id_buoi').val(data.id_buoi);
+                    $('#detail_semester_id22').val(data.detail_semester_id);
+
+                    $('#room_namec').val(data.room_name);
+                    $('#room_idc').val(data.room_id);
+                    $('#weekc').val(data.week);
+                    $('#detail_semester_idc').val(data.detail_semester_id);
+                    $('#thuc').val(data.thu);
+                    $('#id_thuc').val(data.id_thu);
+                    $('#buoic').val(data.buoi);
+                    $('#id_buoic').val(data.id_buoi);
+                    $('#detail_semester_id22c').val(data.detail_semester_id);
+                    
+                    $('#room_namet').val(data.room_name);
+                    $('#room_idt').val(data.room_id);
+                    $('#weekt').val(data.week);
+                    $('#detail_semester_idt').val(data.detail_semester_id);
+                    $('#thut').val(data.thu);
+                    $('#id_thut').val(data.id_thu);
+                    $('#buoit').val(data.buoi);
+                    $('#id_buoit').val(data.id_buoi);
+                    $('#detail_semester_id22t').val(data.detail_semester_id);
+                    }
+                });
+            });
+    </script>
+ <!-- add soft room -->
+
+
+
+<!-- Sửa hp -->
+<script type="text/javascript">   
+$('.edit-schedule').click(function(){
+    var schedule_id = $(this).data('id_schedule');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-schedule')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{schedule_id:schedule_id,_token:_token},
+        success:function(data){
+        $('#schedule_id').val(data.schedule_id);
+        $('#hoc_ki').val(data.hoc_ki);
+        $('#week_quantity').val(data.week_quantity);
+        $('#schedule_status').val(data.schedule_status);
+        $('#nam_hoc').val(data.nam_hoc);
+        
+        }
+    });
+});
+
+
+
+</script>
+
+
+
+
+
 <!-- Sửa phan cong -->
 <script type="text/javascript">   
 $('.show-edit-phancong').click(function(){
@@ -559,10 +586,10 @@ $('.showeditsoftware').click(function(){
     dataType:"JSON",
     data:{software_id:software_id, _token:_token},
         success:function(data){
-        $('#software_quickview_title').val(data.software_name);
+        $('#software_name').val(data.software_name);
         $('#software_quickview_id').val(data.software_id);
-        $('#software_quickview_ver').val(data.software_ver);
-        
+        $('#software_version').val(data.software_version);
+        $('#ghichu').val(data.ghichu);
         }
     });
 });
@@ -586,12 +613,36 @@ $('.showedituser').click(function(){
         $('#user_password').val(data.user_password);
         $('#user_address').val(data.user_address);
         $('#user_phone').val(data.user_phone);
+        $('#khoa').val(data.khoa);
+        $('#user_id2').val(data.user_id);
+        $('#user_name2').val(data.user_name);
+        $('#user_id2').val(data.user_id);
+        $('#id_user2').val(data.id_user);
+        $('#user_email2').val(data.user_email);
+        }
+    });
+});
+</script>
+<!-- Sửa khoa -->
+<script type="text/javascript">   
+$('.showeditkhoa').click(function(){
+    var khoa_id = $(this).data('id_khoa');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-khoa')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{khoa_id:khoa_id, _token:_token},
+        success:function(data){
+        $('#ma_khoa').val(data.ma_khoa);
+        $('#khoa_id').val(data.khoa_id);
+        $('#ten_khoa').val(data.ten_khoa);
+        
         
         }
     });
 });
 </script>
-
 <!-- Version software -->
 <script type="text/javascript">   
 $('.addversionsoftware').click(function(){
@@ -612,6 +663,256 @@ $('.addversionsoftware').click(function(){
 });
 </script>
 
+<!-- Show edit hoc ki  -->
+<script type="text/javascript">   
+$('.show-edit-hocki').click(function(){
+    var hocki_id = $(this).data('id_hocki');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-hocki')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{hocki_id:hocki_id, _token:_token},
+        success:function(data){
+        $('#hocki_id').val(data.hocki_id);
+        $('#hocki').val(data.hocki);
+    
+        
+        }
+    });
+});
+</script>
+<!-- Show edit hoc phan  -->
+<script type="text/javascript">   
+$('.show-edit-hocphan').click(function(){
+    var hocphan_id = $(this).data('id_hocphan');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-edit-hocphan')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{hocphan_id:hocphan_id, _token:_token},
+        success:function(data){
+        $('#hocphan_id').val(data.hocphan_id);
+        $('#mahp').val(data.mahp);
+        $('#tenhp').val(data.tenhp);
+
+    
+        
+        }
+    });
+});
+</script>
+
+
+<!-- chọn hp va nhóm hp -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='mahp'){
+               
+                result = 'nhom';
+                
+            }else{
+                
+              result = 'nhom_id';
+
+                
+            }
+            $.ajax({
+                url : '{{url('/select-hocphan')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
+<!-- chọn hp va nhóm hp -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.chon').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='namhoc'){
+               
+                result = 'hocky';
+                
+            }else{
+                
+              result = 'hocky';
+
+                
+            }
+            $.ajax({
+                url : '{{url('/select-namhoc')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+<!-- chọn hp va nhóm hp -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='mahpc'){
+               
+                result = 'nhomc';
+                
+            }else{
+                
+              result = 'nhom_idc';
+
+                
+            }
+            $.ajax({
+                url : '{{url('/select-hocphan')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+    
+<!-- chọn hp va nhóm hp -->
+<script type="text/javascript">
+        
+        $(document).ready(function(){
+            $('.choose').on('change',function(){
+            var action = $(this).attr('id');
+            var ma_id = $(this).val();
+            var _token = $('input[name="_token"]').val();
+            var result = '';
+           
+            if(action=='mahpt'){
+               
+                result = 'nhomt';
+                
+            }else{
+                
+              result = 'nhom_idt';
+
+                
+            }
+            $.ajax({
+                url : '{{url('/select-hocphan')}}',
+                method: 'POST',
+                data:{action:action,ma_id:ma_id,_token:_token},
+                success:function(data){
+                   $('#'+result).html(data);     
+                }
+            });
+        });
+        });
+          
+    </script>
+
+
+
+<script type="text/javascript">   
+$('.update-suco').click(function(){
+    var suco_id = $(this).data('id_suco');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-update-suco')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{suco_id:suco_id,_token:_token},
+        success:function(data){
+        $('#suco_id').val(data.suco_id);
+        $('#noidung').val(data.noidung);
+        $('#trangthai').val(data.trangthai);
+        $('#ngayphananh').val(data.ngayphananh);
+        $('#id_user').val(data.id_user);
+        $('#room_id').val(data.room_id);
+
+        $('#suco_id2').val(data.suco_id);
+        $('#noidung2').val(data.noidung);
+        $('#trangthai2').val(data.trangthai);
+        $('#noidungkhacphuc2').val(data.noidungkhacphuc);
+        $('#ngaykhacphuc').val(data.ngaykhacphuc);
+        $('#ghichukhac2').val(data.ghichukhac);
+        $('#ngayphananh2').val(data.ngayphananh);
+        $('#id_user2').val(data.id_user);
+        $('#room_id2').val(data.room_id);
+
+        }
+    });
+});
+
+
+</script>
+<script type="text/javascript">   
+$('.dkylich').click(function(){
+    var nhom_id = $(this).data('nhom_id');
+    var _token = $('input[name="_token"]').val();
+    $.ajax({
+    url:"{{url('/show-dky-lich')}}",
+    method:"POST",
+    dataType:"JSON",
+    data:{nhom_id:nhom_id,_token:_token},
+        success:function(data){
+        $('#nhom_id').val(data.nhom_id);
+        $('#sttlophp').val(data.sttlophp);
+        $('#mahp_lophp').val(data.mahp_lophp);
+        $('#namhoc_lophp').val(data.namhoc_lophp);
+        $('#tietbd_lophp').val(data.tietbd_lophp);
+        $('#room_id').val(data.room_id);
+        $('#hocky_lophp').val(data.hocky_lophp);
+        $('#tietbd_lophp').val(data.tietbd_lophp);
+        $('#thu').val(data.thu);
+        $('#hocky_lophp').val(data.hocky_lophp);
+        $('#tietbd_lophp').val(data.tietbd_lophp);
+        $('#soluong').val(data.soluong);
+        $('#ycpm').val(data.ycpm);
+          
+        $('#nhom_id2').val(data.nhom_id);
+        $('#sttlophp2').val(data.sttlophp);
+        $('#mahp_lophp2').val(data.mahp_lophp);
+        $('#namhoc_lophp2').val(data.namhoc_lophp);
+        $('#tietbd_lophp2').val(data.tietbd_lophp);
+        $('#room_id2').val(data.room_id);
+        $('#hocky_lophp2').val(data.hocky_lophp);
+        $('#tietbd_lophp2').val(data.tietbd_lophp);
+        $('#thu2').val(data.thu);
+        $('#hocky_lophp2').val(data.hocky_lophp);
+        $('#tietbd_lophp2').val(data.tietbd_lophp);
+        $('#soluong2').val(data.soluong);
+        $('#ycpm2').val(data.ycpm);
+
+        }
+    });
+});
+</script>
 <!-- table -->
 <script type="text/javascript">
 $(document).ready( function () {
@@ -627,7 +928,7 @@ $(document).ready( function () {
 </script> 
 
 <!-- add soft room -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
         
         $(document).ready(function(){
             $('.choose').on('change',function(){
@@ -656,10 +957,10 @@ $(document).ready( function () {
         });
         });
           
-    </script>
+    </script> -->
 
     <!-- Thêm học phần -->
-<script type="text/javascript">   
+<!-- <script type="text/javascript">   
 $('.dangkyphong').click(function(){
     var room_id = $(this).data('id_room');
     var week_id = $(this).data('id_week');
@@ -678,7 +979,7 @@ $('.dangkyphong').click(function(){
         }
     });
 });
-</script>
+</script> -->
     <script type="text/javascript">
    
    $( function() {

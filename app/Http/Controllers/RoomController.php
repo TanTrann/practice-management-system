@@ -18,7 +18,8 @@ class RoomController extends Controller
 {   
     public function AuthLogin(){
         $user_id = Session::get('user_id');
-        if($user_id){
+        $id_chucvu = Session::get('id_chucvu');
+        if($user_id && $id_chucvu <> 1){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
@@ -28,7 +29,7 @@ class RoomController extends Controller
 
     public function all_room(){
         $this->AuthLogin();
-        $all_room = DB::table('tbl_room')->orderBy('room_name','asc')->get();
+        $all_room = DB::table('tbl_room')->get();
         $all_software = Software::get(); 
         $all_pc = DB::table('tbl_computer')->get();
         $manager_room = view('admin.room.all_room')->with('all_room',$all_room)->with('all_software',$all_software)->with('all_pc',$all_pc);
@@ -40,7 +41,9 @@ class RoomController extends Controller
         $data =  array();
         $data['room_name']= $Request->room_name;
         $data['pc_quantity']= $Request->pc_quantity;
-        $data['cauhinh']= $Request->cauhinh;
+        $data['cpu']= $Request->cpu;
+        $data['ram']= $Request->ram;
+        $data['ghichu']= $Request->ghichu;
         DB::table('tbl_room')->insert($data);
        
         Session::put('message','Thêm phòng thành công');
@@ -62,7 +65,11 @@ class RoomController extends Controller
         $data =  array();
         $room_id=$Request->room_id;
         $data['room_name']= $Request->room_name;
-        
+        $data['pc_quantity']= $Request->pc_quantity;
+        $data['cpu']= $Request->cpu;
+        $data['ram']= $Request->ram;
+        $data['ghichu']= $Request->ghichu;
+      
         DB::table('tbl_room')->where('room_id', $room_id)->update($data);
         Session::put('message','Cập nhật phòng thành công');
         return Redirect()->back();
@@ -73,19 +80,23 @@ class RoomController extends Controller
         $room = Room::find($room_id);
         $output['room_name'] = $room->room_name;
         $output['room_id'] = $room->room_id;
-        
+        $output['pc_quantity'] = $room->pc_quantity;
+        $output['cpu'] = $room->cpu;
+        $output['ram'] = $room->ram;
+        $output['ghichu'] = $room->ghichu;
+      
         echo json_encode($output);   
     }
     
-    public function update_pc(Request $Request){
-        $data =  array();
-        $computer_id=$Request->computer_id;
-        $data['computer_name']= $Request->computer_name;
+    // public function update_pc(Request $Request){
+    //     $data =  array();
+    //     $computer_id=$Request->computer_id;
+    //     $data['computer_name']= $Request->computer_name;
         
-        DB::table('tbl_computer')->where('computer_id', $computer_id)->update($data);
-        Session::put('message','Cập nhật máy thành công');
-        return Redirect()->back();
-    }
+    //     DB::table('tbl_computer')->where('computer_id', $computer_id)->update($data);
+    //     Session::put('message','Cập nhật máy thành công');
+    //     return Redirect()->back();
+    // }
 
    
 
@@ -95,8 +106,8 @@ class RoomController extends Controller
         $room_detail = DB::table('tbl_room')->where('room_id',$room_id)->get();
         
         $all_software = Software::get();
-        $ver_detail = DB::table('tbl_room_details')->where('room_id',$room_id)->join('tbl_version','tbl_version.version_id','=','tbl_room_details.version_id')
-        ->join('tbl_software','tbl_software.software_id','=','tbl_version.software_id')->select('tbl_software.*','tbl_version.*','tbl_room_details.*')
+        $ver_detail = DB::table('tbl_room_details')->where('room_id',$room_id)->join('tbl_software','tbl_software.software_id','=','tbl_room_details.software_id')
+        
         ->get();
         
         $manager_room  = view('admin.room.room_detail')->with('count_software',$count_software)->with('room_detail',$room_detail)->with('all_software',$all_software)->with('ver_detail',$ver_detail);
@@ -112,7 +123,7 @@ class RoomController extends Controller
                 $select_version = Version::where('software_id',$data['ma_id'])->orderby('version_number','ASC')->get();
     			$output.='<option>---Chọn phiên bản---</option>';
     			foreach($select_version as $key => $soft){
-    				$output.='<option value="'.$soft->version_id.'">'.$soft->version_number.'</option>';
+    				$output.='<option class="version_number" value="'.$soft->version_id.'">'.$soft->version_number.'</option>';
     			}
               
     		}else{
@@ -128,15 +139,51 @@ class RoomController extends Controller
     	
     }
 
+    // public function save_software_room(Request $request){
+    //     $this->AuthLogin();
+      
+	// 	$data = $request->all();
+	// 	$details = new RoomDetails();
+	// 	$details->room_id = $data['room_id'];
+	// 	$details->software_id = $data['software_id'];		
+    //     $all_ver = Software::where('software_id',$data['software_id'])->get();
+    //     foreach ($all_ver as $key => $ver){
+    //         $check = $ver ->software_id;
+    //     }
+    //     $all_soft = RoomDetails::where('room_id', $data['room_id'])->join('tbl_version','tbl_version.version_id','=','tbl_room_details.version_id')->where('software_id', $check)->count();
+      
+    //     if( $all_soft == 1  ){
+    //         Session::put('message','Thêm phần mềm không thành công,phần mềm đã tồn tại');
+    //     }else{
+           
+    //         $details->save();
+    //         Session::put('message','Thêm phần mềm thành công');
+    //     }
+		
+    //     return Redirect()->back();
+	// }
+
     public function save_software_room(Request $request){
         $this->AuthLogin();
+      
 		$data = $request->all();
 		$details = new RoomDetails();
 		$details->room_id = $data['room_id'];
-		$details->version_id = $data['version_id'];		
-
-		$details->save();
-        Session::put('message','Thêm phần mềm thành công');
+		$details->software_id = $data['software_id'];		
+        $all_ver = Software::where('software_id',$data['software_id'])->get();
+        foreach ($all_ver as $key => $ver){
+            $check = $ver ->software_id;
+        }
+        $all_soft = RoomDetails::where('room_id', $data['room_id'])->where('software_id', $check)->count();
+      
+        if( $all_soft == 1  ){
+            Session::put('message','Thêm phần mềm không thành công,phần mềm đã tồn tại');
+        }else{
+           
+            $details->save();
+            Session::put('message','Thêm phần mềm thành công');
+        }
+		
         return Redirect()->back();
 	}
     public function delete_soft_room($room_details_id){

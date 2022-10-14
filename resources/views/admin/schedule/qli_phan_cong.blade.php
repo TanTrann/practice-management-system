@@ -68,8 +68,10 @@
 
                                             <!-- <button class="btn btn-success btn-xs show-edit-subject" data-toggle="modal"  data-id_subject="{{$sub->subject_id}}" data-target="#phancong">Phân công</button> -->
                                             <!-- <button class="btn btn-primary btn-xs show-edit-phancong" data-toggle="modal" data-target="#edit-nhomhp" data-id_nhomhp="{{$hp->nhomhp_id}}" >Chỉnh sửa</button> -->
-                                           
+                                            <a href="{{URL::to('/delete-phancong/'.$hp->nhomhp_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa nhóm học phần này?')">
                                             <button class="btn btn-danger btn-xs">Xóa</button>
+                                            </a>
+                                           
                                       
                                         </td>
                                     </tr>
@@ -123,7 +125,7 @@
                                         <td> 
                                             <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                             <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                           
+                                          
                                             <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                                            
                                         </td>

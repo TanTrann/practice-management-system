@@ -8,7 +8,7 @@
     <div class="pcoded-inner-content"><button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#add-software" style="float: right;">Thêm phần mềm</button>    <div class="card-header-left">
                                             <!-- <button type="button" class=" btn btn-info  xemthem" data-toggle="modal" data-target="#xemthem" style="float: right;margin-right: 23px;" >Lịch sử thêm phiên bản</button><div class="card-header-left"> -->
             <div class="card-header">
-                <h3>Quản lý phần mềm</h3>
+                <h3>>Quản lý phần mềm</h3>
                     <?php
                                 $message = Session::get('message');
                                 if ($message){
@@ -17,7 +17,7 @@
                                     }
                             ?>
                 </div>
-       
+       <p>Danh sách phần mềm</p>
                 
                             <!-- Hover table card start -->
                          
@@ -30,6 +30,7 @@
                                                     <th>ID</th>
                                                     <th>Tên phần mềm</th>
                                                     <th>Phiên bản</th>
+                                                    <th>Ghi chú</th>
                                                     <th style="width: 200px;">Quản lý</th>
                                                 </tr>
                                             </thead>
@@ -39,12 +40,11 @@
                                                     <th>{{$value->software_id}}</th>
                                                     <td>{{$value->software_name}}</td>
                                                    
-                                                    <td> <a href="{{URL::to('/chi-tiet-phan-mem/'.$value->software_id)}}"> <button>Xem chi tiết</button></a></td>
+                                                    <td> {{$value->software_version}}</td>
+                                                    <td> {{$value->ghichu}}</td>
                                                  
                                                     <td>
-                                                        <button class="btn-sm btn-success btn-outline-success addversionsoftware" data-toggle="modal" data-target="#addversionsoftware" data-id_software="{{$value->software_id}}">
-                                                            <i class="fa fa-plus"></i>
-                                                        </button>
+                                                      
                                                         <button class="btn-sm btn-primary btn-outline-primary showeditsoftware" data-toggle="modal" data-target="#showeditsoftware" data-id_software="{{$value->software_id}}">
                                                             <i class="fa fa-pencil"></i>
                                                         </button>
@@ -95,6 +95,23 @@
                                 placeholder="Nhập tên phần mềm">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            
+                            <label class="col-sm-3 col-form-label">Phiên bản:</label>
+                            <div class="col-sm-10">
+                                <input name="software_version" type="text" class="form-control"
+                                placeholder="Nhập phiên bản">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            
+                            <label class="col-sm-3 col-form-label">Ghi chú:</label>
+                            <div class="col-sm-10">
+                                <input name="ghichu" type="text" class="form-control"
+                                placeholder="Nhập ghi chú">
+                            </div>
+                        </div>
+                       
                         
                     
                 </div>        
@@ -117,7 +134,7 @@
         <div class="modal-content">
             <div class="modal-header">
            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="myModalLabel">Cập nhật tên phần mềm </h4>
+                      <h4 class="modal-title" id="myModalLabel">Cập nhật phần mềm </h4>
           
             </div>
             <div class="modal-body">
@@ -128,17 +145,32 @@
                 
                     <form action="{{URL('/update-software')}}" method="post">
                         @csrf
-                        <div class="form-group row">
+                       
                         <input type="hidden" name="software_id" id="software_quickview_id" >
-                        <span id="software_quickview_id"></span>
+                        <div class="form-group row">
+                            
                             <label class="col-sm-3 col-form-label">Tên phần mềm:</label>
                             <div class="col-sm-10">
-                                <input name="software_name" type="text" class="form-control" id="software_quickview_title"
+                                <input name="software_name" id="software_name" type="text" class="form-control"
                                 placeholder="Nhập tên phần mềm">
                             </div>
                         </div>
-                        
-                        
+                         <div class="form-group row">
+                     
+                            <label class="col-sm-3 col-form-label">Phiên bản:</label>
+                            <div class="col-sm-10">
+                                <input name="software_version" type="text" class="form-control" id="software_version"
+                                placeholder="Nhập tên phần mềm">
+                            </div>
+                         </div>
+                         <div class="form-group row">
+                        <span id="software_quickview_id"></span>
+                            <label class="col-sm-3 col-form-label">Ghi chú:</label>
+                            <div class="col-sm-10">
+                                <input name="ghichu" type="text" class="form-control" id="ghichu"
+                                placeholder="Nhập tên phần mềm">
+                            </div>
+                        </div>
                     
                 </div>        
             
@@ -242,17 +274,17 @@
                                                 
                                             </thead>
                                             <tbody>
-                                                @foreach($all_version as $key => $version)
+                                               
                                                 <tr>
                                                     
-                                                    <th id="software_title" >{{$version->software_name}}</th>
+                                                    <th id="software_title" ></th>
                                                     
-                                                    <th id="software_number">{{number_format((float)$version->version_number, 1, '.', '')}}</th>
+                                                    <th id="software_number"></th>
                                                 
-                                                    <td>  <a href="{{URL::to('/delete-version/'.$version->version_id)}}"  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
+                                                    <td>  <a href=""  onclick="return confirm('Bạn có chắc là muốn xóa phiên bản này?')"  style="float: right;">
                                                         <i class="fa fa-trash" style="color:red"></i>
                                                     </a></td>
-                                                    @endforeach
+                                                   
                                                 </tr>
                                                 
                                                 

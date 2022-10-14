@@ -15,7 +15,7 @@ class SoftwareController extends Controller
     public function AuthLogin(){
         $user_id = Session::get('user_id');
         $id_chucvu = Session::get('id_chucvu');
-        if($user_id && $id_chucvu == 0){
+        if($user_id && $id_chucvu <> 1){
             return Redirect('dashboard');
         }else{
             return Redirect('admin')->send();
@@ -34,8 +34,7 @@ class SoftwareController extends Controller
     public function all_software(){
         $this->AuthLogin();
         $all_software = DB::table('tbl_software')->orderBy('software_id','DESC')->get();
-        $all_version = DB::table('tbl_version')->join('tbl_software','tbl_version.software_id','=','tbl_software.software_id')->orderBy('version_id','desc')->get();
-         $manager_software = view('admin.software.all_software')->with('all_software',$all_software)->with('all_version',$all_version);
+        $manager_software = view('admin.software.all_software')->with('all_software',$all_software);
         return view ('admin_layout')->with('admin.software.all_software',$manager_software);
     }
 
@@ -43,6 +42,9 @@ class SoftwareController extends Controller
         $this->AuthLogin();
         $data =  array();
         $data['software_name']= $Request->software_name;
+        $data['software_version']= $Request->software_version;
+        $data['ghichu']= $Request->ghichu;
+        
         DB::table('tbl_software')->insert($data);
         Session::put('message','Thêm phần mềm thành công');
         return Redirect()->back();
@@ -73,6 +75,8 @@ class SoftwareController extends Controller
         $data =  array();
         $software_id=$Request->software_id;
         $data['software_name']= $Request->software_name;
+        $data['software_version']= $Request->software_version;
+        $data['ghichu']= $Request->ghichu;
         DB::table('tbl_software')->where('software_id', $software_id)->update($data);
         Session::put('message','Cập nhật phần mềm thành công');
         return Redirect()->back();
@@ -92,7 +96,10 @@ class SoftwareController extends Controller
         $software_id = $request->software_id;
         $software = Software::find($software_id);
         $output['software_name'] = $software->software_name;
-        $output['software_id'] = $software->software_id;      
+        $output['software_id'] = $software->software_id;     
+        $output['software_version'] = $software->software_version;   
+        $output['ghichu'] = $software->ghichu;   
+
         echo json_encode($output);
     }
 
@@ -106,7 +113,7 @@ class SoftwareController extends Controller
 
     public function delete_version($version_id){
         $this->AuthLogin();
-        Version::where('version_id',$version_id)->delete();
+       
         RoomDetails::where('version_id',$version_id)->delete();
         Session::put('message','Xóa phiên bản thành công');
         return Redirect()->back();

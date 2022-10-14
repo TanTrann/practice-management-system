@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>Dashio - Bootstrap Admin Template</title>
+  <title>Login Admin</title>
 
   <!-- Favicons -->
   <link href="/public/backend/img/favicon.png" rel="icon">
@@ -39,6 +39,13 @@
       <form class="form-login" action="{{URL::to('/admin-dashboard')}}"  method="post">
                     {{csrf_field()}}
         <h2 class="form-login-heading">Đăng nhập</h2>
+          <p style="text-align: center;"><?php
+                                $message = Session::get('message');
+                                if ($message){
+                                echo '<span style="color:red; font-size:17px;">',$message.'</span>';
+                                    Session::put('message',null);
+                                    }
+                            ?></p>
         <div class="login-wrap">
           <input type="text" class="form-control" placeholder="Email" autofocus  name="id_user">
           <br>
